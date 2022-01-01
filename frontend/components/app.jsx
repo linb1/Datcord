@@ -7,7 +7,6 @@ import HomeContainer from "./home/home_container";
 import { AuthRoute, ProtectedRoute } from '../util/route_util';
 const App = () => (
     <div>
-        <h1>Datcord</h1>
         <Switch>
             <Route exact path="/" component={SplashContainer} />
             <AuthRoute path="/login" component={LoginFormContainer} />

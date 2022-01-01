@@ -6,9 +6,13 @@ class SignupForm extends React.Component {
         this.state = {
             email: "",
             username: "",
-            password: ""
+            password: "",
+            birthMonth: null,
+            birthDay: null,
+            birthYear: null
         };
         this.handleSubmit = this.handleSubmit.bind(this)
+        this.stateWithDOB = this.stateWithDOB.bind(this)
     }
 
     componentDidMount() {
@@ -21,10 +25,20 @@ class SignupForm extends React.Component {
         }
     }
 
+    stateWithDOB(){
+        const dobState = {
+            email: this.state.email,
+            username: this.state.username,
+            password: this.state.password,
+            date_of_birth: `${this.state.birthMonth}/${this.state.birthDay}/${this.state.birthYear}`
+        }
+        return Object.assign({},dobState)
+    }
+
     handleSubmit(e) {
         e.preventDefault();
-        const user = Object.assign({}, this.state);
-        this.props.signup(user).then(() => this.props.history.push('/@me'));
+        // const user = Object.assign({}, this.state);
+        this.props.signup(this.stateWithDOB()).then(() => this.props.history.push('/@me'));
     }
 
     renderError() {
@@ -40,6 +54,30 @@ class SignupForm extends React.Component {
     }
 
     render() {
+        const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+        const selectMonth = (
+            <select defaultValue="Select" onChange={this.handleChange("birthMonth")}>
+                <option hidden disabled>Select</option>
+                {[...Array(12).keys()].map(month => <option key={"month-" + (month + 1)} value={month + 1}>{months[month]}</option>)}
+            </select>
+        );
+
+        const selectDay = (
+            <select defaultValue="Select" onChange={this.handleChange("birthDay")}>
+                <option hidden disabled>Select</option>
+                {[...Array(31).keys()].map(day => <option key={"day-" + (day + 1)} value={day + 1}>{day + 1}</option>)}
+            </select>
+        );
+
+        const earliestYear = new Date().getFullYear() - 3;
+
+        const selectYear = (
+            <select defaultValue="Select" onChange={this.handleChange("birthYear")}>
+                <option hidden disabled>Select</option>
+                {[...Array(150).keys()].map(year => <option key={"year-" + (earliestYear - year)} value={earliestYear - year}>{earliestYear - year}</option>)}
+            </select>
+        );
+
         return (
             <div>
                 <form>
@@ -66,6 +104,11 @@ class SignupForm extends React.Component {
                             onChange={this.handleChange("password")}
                         />
                     </label>
+                    <div>
+                        {selectMonth}
+                        {selectDay}
+                        {selectYear}
+                    </div>
                     <button onClick={this.handleSubmit}>Sign Up</button>
                 </form>
                 <Link to="/login">or log in here</Link>
