@@ -1,7 +1,233 @@
+.splash-banner{
+    width: 100%;
+    height: 550px;
+    background-color: #404EED;
+    // border: 1px solid red;
+    overflow: hidden;
+    position: relative;
+    img{
+        position: absolute;
+        bottom: 0;
+        // border: 2px solid yellow;
+    }
+}
+
+.splash-toon-right{
+    left: 73%;
+}
+
+.splash-toon-left{
+    right: 73%;
+}
+
+.splash-background{
+    transform: translateX(-25%);
+}
+
+.splash-banner-content{
+    position: relative;
+    top: 10%;
+    width: 53%;
+    height: 50%;
+    margin: 0 auto;
+    // border: 2px solid yellow;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    gap: 25px;
+    h1{
+        font-size: 56px;
+        font-family: 'Mitr', sans-serif;
+        font-weight: 700;
+    }
+
+    p{
+        font-family: 'Whitney Book', sans-serif;
+        line-height: 1.5;
+        text-align: center;
+        font-size: 20px;
+    }
+}
+
+
+// splash header
+.splash-header{
+    height: 80px;
+    color: white;
+    background-color: #404EED;
+    // border: 1px solid yellow;
+    font-family: 'Whitney', sans-serif;
+}
+
 .splash-container{
     max-width: 1100px;
+    height: 100%;
     margin: auto;
     overflow: hidden;
     display: grid;
     grid-template-columns: 1fr 3fr 1fr;
+    justify-content: center;
+    // border: 1px solid brown;
+}
+
+.splash-logo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border: 1px solid pink;
+    img{
+        // filter: invert(100%);
+    }
+
+    span{
+        font-family: 'Mitr', sans-serif;
+        font-weight: 700;
+        font-size: 20px;
+        letter-spacing: 2px;
+    }
+}
+//navbar
+
+.navbar{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    // border: 1px solid green;
+    ul {
+        display: flex;
+        li {
+            padding: 0 15px;
+            font-size: 16px;
+        }
+    }
+}
+
+
+//splash button
+
+.splash-button-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    // border: 1px solid red;
+}
+.splash-button{
+    font-family: 'Whitney', sans-serif;
+    position: absolute;
+    display: inline-block;
+    color: black;
+    background-color: #FFFF;
+    border-radius: 40px;
+    font-size: 14px;
+    padding: 10px 16px;
+    text-decoration: none;
+}
+
+//splash section 1
+.splash-section-1{
+    width: 100%;
+    height: 650px;
+    // border: 2px red solid;
+    position: relative;
+}
+
+.splash-section-container{
+    position: relative;
+    top: 10%;
+    margin: 0 auto;
+    // border: 2px green solid;
+    width: 80%;
+    height: 80%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.splash-section-img-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.splash-section-content{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 25px;
+    h2{
+        font-size: 48px;
+        font-family: 'Mitr', sans-serif;
+        font-weight: 500;
+    }
+    p{
+        font-family: 'Whitney Book', sans-serif;
+        line-height: 1.5;
+        font-size: 20px;
+    }
+}
+
+//splash section 2
+.splash-section-2{
+    width: 100%;
+    height: 650px;
+    // border: 2px red solid;
+    position: relative;
+    background-color: #F6F6F6;
+}
+
+//splash section 3
+
+.splash-section-3{
+    width: 100%;
+    height: 650px;
+    // border: 2px red solid;
+    position: relative;
+}
+
+
+//footer
+
+.footer{
+    width: 100%;
+    height: 510px;
+    background-color: #23272A;
+
+}
+
+.footer-container{
+    max-width: 80%;
+    border: 2px solid green;
+    position: relative;
+    margin: 0 auto;
+}
+.footer-info-container{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    border: 2px solid white;
+    span{
+        border: 2px solid yellow;
+    }
+}
+
+.footer-ending{
+    padding-top: 20px;
+    border: 2px red solid;
+    max-width: 1100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .splash-logo{
+        color: white;
+    }
+
+    .splash-button-container{
+        border: 2px solid cyan;
+        .splash-button{
+            color: white;
+            background-color: #5765F2;
+        }
+    }
 }
