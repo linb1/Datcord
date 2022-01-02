@@ -77,7 +77,7 @@
     justify-content: center;
     align-items: center;
     gap: 10px;
-    border: 1px solid pink;
+    // border: 1px solid pink;
     img{
         // filter: invert(100%);
     }
@@ -124,8 +124,13 @@
     font-size: 14px;
     padding: 10px 16px;
     text-decoration: none;
+    transition-duration: 0.4s;
 }
 
+.splash-button:hover {
+    color: #404EED;
+    box-shadow: 0px 2px 10px 4px rgba(0,0,0,0.15);
+}
 //splash section 1
 .splash-section-1{
     width: 100%;
@@ -198,36 +203,67 @@
 }
 
 .footer-container{
-    max-width: 80%;
-    border: 2px solid green;
+    top: 17%;
+    max-width: 90%;
+    // border: 2px solid green;
     position: relative;
     margin: 0 auto;
 }
 .footer-info-container{
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    border: 2px solid white;
-    span{
-        border: 2px solid yellow;
+    gap: 5%;
+    grid-template-columns: repeat(3, 1fr);
+    padding-bottom: 35px;
+    // border: 2px solid white;
+}
+
+.info-1{
+    h3{
+        color: #5765F2;
+        font-size: 40px;
+        font-family: 'Mitr', sans-serif;
+        font-weight: 700;
+    }
+    p{
+        color: white;
+        font-family: 'Whitney Book', sans-serif;
+        font-size: 14px;
+    }
+}
+
+.info-list{
+    font-family: 'Whitney Book', sans-serif;
+    line-height: 2;
+    font-size: 16px;
+    color: white;
+    h4{
+        color: #5765F2
     }
 }
 
 .footer-ending{
-    padding-top: 20px;
-    border: 2px red solid;
-    max-width: 1100px;
-    display: flex;
+    padding-top: 30px;
+    border-top: 2px solid #5765F2;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
     justify-content: space-between;
     align-items: center;
     .splash-logo{
+        display: flex;
+        justify-content: start;
         color: white;
     }
 
     .splash-button-container{
-        border: 2px solid cyan;
+        // border: 2px solid cyan;
+        display: flex;
+        justify-content: end;
         .splash-button{
             color: white;
             background-color: #5765F2;
+        }
+        .splash-button:hover{
+            background-color:#7983F5;
         }
     }
 }

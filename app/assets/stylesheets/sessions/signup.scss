@@ -1,0 +1,197 @@
+.signup{
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    overflow: hidden;
+    justify-content: center;
+    align-items: center;
+}
+
+.background{
+    height: 100vh;
+    width: 100vw;
+    object-fit: cover;
+    position: absolute;
+}
+
+@keyframes render-signup-form{
+    0%{
+        opacity: 0%;
+        width: 300px;
+        transform: translateY(-50%);
+    }
+
+    50%{
+        opacity: 100%;
+        width: 415px;
+        transform: translateY(4%);
+    }
+
+    100%{
+        opacity: 100%;
+        width: 415px;
+        transform: translate(0%);
+    }
+}
+
+.signup-form-container{
+    animation: render-signup-form 0.4s;
+    position: relative;
+    width: 415px;
+    height: 500px;
+    border-radius: 5px;
+    // border: 2px solid red;
+    background-color: #36393F;
+    padding: 32px;
+}
+
+.signup-form{
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-rows: 2fr repeat(5, 3fr);
+    // border: 2px solid green;
+    button{
+        width: 100%;
+        height: 44px;
+        box-sizing: border-box;
+        padding: 10px;
+        font-size: 16px;
+        font-family: 'Whitney', sans-serif;
+        color: white;
+        border-radius: 3px;
+        border: none;
+        background-color: #5765F2;
+        cursor: pointer;
+        transition-duration: 0.2s;
+    }
+
+    button:hover{
+        background-color: #4752C4;
+    }
+}
+
+.signup-form-inputs{
+    display: flex;
+    flex-direction: column;
+    // border: 2px solid cyan;
+    justify-content: center;
+    label{
+        color: #B9BBBE;
+        font-family: 'Mukta', sans-serif;
+        font-weight: 600;
+        font-size: 13px;
+        margin: 0px 0px 8px 0px;
+        width: auto;
+    }
+    
+    input{
+        width: 100%;
+        height: 40px;
+        box-sizing: border-box;
+        padding: 10px;
+        font-size: 16px;
+        font-family: 'Whitney Book', sans-serif;
+        color: white;
+        background-color: #303338;
+        border: 1px solid #212121;
+        border-radius: 3px;
+        transition-duration: 0.4s;
+    }
+
+    input:hover{
+        border-color: black;
+    }
+
+    input:focus{
+        outline: none;
+        border-color: #01AEF4;
+    }
+}
+
+.signup-form-select-container{
+    display: flex;
+    flex-direction: column;
+    // border: 2px solid cyan;
+    justify-content: center;
+    label{
+        color: #B9BBBE;
+        font-family: 'Mukta', sans-serif;
+        font-weight: 600;
+        font-size: 13px;
+        margin: 0px 0px 8px 0px;
+        width: auto;
+    }
+
+}
+
+.signup-form-select{
+    display: flex;
+    justify-content: space-between;
+    select{
+        height: 40px;
+        box-sizing: border-box;
+        padding-left: 8px;
+        font-size: 18px;
+        font-family: 'Whitney Book', sans-serif;
+        color: #72767D;
+        background-color: #303338;
+        border: 1px solid #212121;
+        border-radius: 3px;
+        transition-duration: 0.4s;
+        
+    }
+
+    select:hover{
+        border-color: black;
+    }
+
+    select:focus{
+        outline: none;
+        border-color: black;
+    }
+
+    .select-month{
+        width: 150px;
+    }
+
+    .select-day{
+        width: 100px;
+    }
+
+    .select-year{
+        width: 120px;
+    }
+}
+.signup-form-header{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    h1{
+        font-size: 25px;
+        font-family: 'Mukta', sans-serif;
+        font-weight: 700;
+        color: white;
+        margin-bottom: 8px;
+    }
+}
+
+.signup-form-button-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    .signup-form-link{
+    font-size: 14px;
+    font-family: 'Whitney Book', sans-serif;
+    margin-top: 12px;
+    .login-link{
+        text-decoration: none;
+        color: #00AFF4;
+    }
+
+    .login-link:hover{
+        text-decoration: underline;
+    }
+}
+}

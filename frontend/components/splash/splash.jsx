@@ -97,8 +97,33 @@ class Splash extends React.Component{
                     <footer className='footer'>
                         <div className='footer-container'>
                             <div className='footer-info-container'>
-                                <span>placeholder left</span>
-                                <span>placeholder right</span>
+                                <div className='info-1'>
+                                    <h3>IMAGINE A PLACE</h3>
+                                    <br/>
+                                    <p>Disclaimer: Images used in Datcord are taken
+                                        from the offical Discord website for the purpose
+                                        of making an accurate clone. All credit belongs
+                                        to discord
+                                    </p>
+                                </div>
+                                <div className='info-list'>
+                                    <h4>Placeholder</h4>
+                                    <ul>
+                                        <li>placeholder</li>
+                                        <li>placeholder</li>
+                                        <li>placeholder</li>
+                                    </ul>
+                                </div>
+                                <div className='info-list'>
+                                    <h4>Placeholder</h4>
+                                    <ul>
+                                        <li>placeholder</li>
+                                        <li>placeholder</li>
+                                        <li>placeholder</li>
+                                        <li>placeholder</li>
+                                        <li>placeholder</li>
+                                    </ul>
+                                </div>
                             </div>
                             <div className='footer-ending'>
                                 <div className='splash-logo'>

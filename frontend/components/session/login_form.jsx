@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom"
+import background from '../../../app/assets/images/background-session.png';
 class LoginForm extends React.Component {
     constructor(props) {
         super(props);
@@ -45,30 +46,51 @@ class LoginForm extends React.Component {
     }
 
     render() {
+        // debugger;
         return (
-            <div>
-                <form> 
-                    {/* if button doesnt work, give form onSubmit and use input type submit */}
-                    <h1>Login</h1>
-                    {this.renderError()}
-                    <label>Email
-                        <input
-                            type="text"
-                            value={this.state.email}
-                            onChange={this.handleChange("email")}
-                        />
-                    </label>
-                    <label>Password
-                        <input
-                            type="password"
-                            value={this.state.password}
-                            onChange={this.handleChange("password")}
-                        />
-                    </label>
-                    <button onClick={this.handleSubmit}>Login</button>
-                    <button onClick={this.handleDemoLogin}>Demo Login</button>
-                </form>
-                <Link to="/signup">or sign up here</Link>
+            <div className="login">
+                <img className="background" src={background} />
+                <div className="login-form-container">
+                    <form className="login-form"> 
+                        <div className="login-form-header">
+                            <h1>Welcome back!</h1>
+                            <h2>We're so excited to see you again!</h2>
+                        </div>
+                        <div className="login-form-inputs">
+                            <label>EMAIL</label>
+                            <input
+                                    className="login-email"
+                                    type="text"
+                                    value={this.state.email}
+                                    onChange={this.handleChange("email")}
+                            />
+                        </div>
+                        <div className="login-form-inputs">
+                            <label>PASSWORD</label>
+                            <input
+                                    className="login-password"
+                                    type="password"
+                                    value={this.state.password}
+                                    onChange={this.handleChange("password")}
+                            />
+                        </div>
+                        <div className="login-form-button-container">
+                            <button onClick={this.handleSubmit}>Login</button>
+                            <div className="login-form-link">
+                                <span>Need an Account?&nbsp;&nbsp;&nbsp;</span>
+                                <Link className="signup-link" to="/signup">Register</Link>
+                            </div>
+                            {this.renderError()}
+                        </div>
+                    </form>
+                    <div className="login-form-demo">
+                        <button className="demo-login" onClick={this.handleDemoLogin}>Demo Login</button>
+                        <div className="login-form-demo-text">
+                            <h1>Log in with Demo User</h1>
+                            <h2>Use this to log in as an exisiting user without sign up</h2>
+                        </div>
+                    </div>
+                </div>
             </div>
         )
     }

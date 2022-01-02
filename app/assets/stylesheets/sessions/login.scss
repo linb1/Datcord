@@ -1,0 +1,198 @@
+.login{
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    overflow: hidden;
+    justify-content: center;
+    align-items: center;
+}
+
+.background{
+    height: 100vh;
+    width: 100vw;
+    object-fit: cover;
+    position: absolute;
+}
+
+@keyframes render-form{
+    0%{
+        opacity: 0%;
+        width: 650px;
+        transform: translateY(-50%);
+    }
+
+    50%{
+        opacity: 100%;
+        width: 745px;
+        transform: translateY(4%);
+    }
+
+    100%{
+        opacity: 100%;
+        width: 745px;
+        transform: translate(0%);
+    }
+}
+
+.login-form-container{
+    animation: render-form 0.4s;
+    position: relative;
+    width: 745px;
+    height: 360px;
+    border-radius: 5px;
+    // border: 2px solid red;
+    display: grid;
+    grid-template-columns: 3fr 2fr;
+    column-gap: 10%;
+    background-color: #36393F;
+    padding: 32px;
+}
+
+
+.login-form{
+    // border: 2px green solid;
+    display: grid;
+    grid-template-rows: repeat(4, 1fr);
+    .login-form-inputs{
+        display: flex;
+        flex-direction: column;
+        // border: 2px solid cyan;
+        justify-content: center;
+        label{
+            color: #B9BBBE;
+            font-family: 'Mukta', sans-serif;
+            font-weight: 600;
+            font-size: 13px;
+            margin: 0px 0px 8px 0px;
+            width: auto;
+        }
+    
+        input{
+            width: 100%;
+            height: 40px;
+            box-sizing: border-box;
+            padding: 10px;
+            font-size: 16px;
+            font-family: 'Whitney Book', sans-serif;
+            color: white;
+            background-color: #303338;
+            border: 1px solid #212121;
+            border-radius: 3px;
+            transition-duration: 0.4s;
+        }
+
+        input:hover{
+            border-color: black;
+        }
+
+        input:focus{
+            outline: none;
+            border-color: #01AEF4;
+        }
+    }
+
+    button{
+        width: 100%;
+        height: 44px;
+        box-sizing: border-box;
+        padding: 10px;
+        font-size: 16px;
+        font-family: 'Whitney', sans-serif;
+        color: white;
+        border-radius: 3px;
+        border: none;
+        background-color: #5765F2;
+        cursor: pointer;
+        transition-duration: 0.2s;
+    }
+
+    button:hover{
+        background-color: #4752C4;
+    }
+
+
+}
+
+.login-form-header{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    h1{
+        font-size: 25px;
+        font-family: 'Mukta', sans-serif;
+        font-weight: 700;
+        color: white;
+        margin-bottom: 8px;
+    }
+
+    h2{
+        font-size: 16px;
+        font-family: 'Whitney Book', sans-serif;
+        color: #B9BBBE;
+    }
+}
+
+.login-form-button-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.login-form-link{
+    font-size: 14px;
+    font-family: 'Whitney Book', sans-serif;
+    color: #72767D;
+    margin-top: 12px;
+    .signup-link{
+        text-decoration: none;
+        color: #00AFF4;
+    }
+
+    .signup-link:hover{
+        text-decoration: underline;
+    }
+}
+
+.login-form-demo{
+    // border: 2px solid purple;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    row-gap: 10%;
+}
+
+.login-form-demo-text{
+    text-align: center;
+    h1{
+        font-size: 25px;
+        font-family: 'Mukta', sans-serif;
+        font-weight: 700;
+        color: white;
+        margin-bottom: 12px;
+    }
+    
+    h2{
+        font-size: 16px;
+        font-family: 'Whitney Book', sans-serif;
+        color: #B9BBBE;
+    }
+}
+
+.demo-login{
+    width: 176px;
+    height: 176px;
+    font-size: 16px;
+    font-family: 'Whitney', sans-serif;
+    color: white;
+    border-radius: 5px;
+    border: none;
+    background-color: #5765F2;
+    cursor: pointer;
+    transition-duration: 0.2s;
+}
+
+.demo-login:hover{
+    background-color: #6A77ED;
+}
