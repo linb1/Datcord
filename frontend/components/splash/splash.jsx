@@ -1,12 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import logo from '../../../app/assets/images/logo.png';
-import splashright from '../../../app/assets/images/splash-right.svg';
-import splashleft from '../../../app/assets/images/splash-left.svg';
-import splashBackground from '../../../app/assets/images/splash-background.svg';
-import splashSection1 from '../../../app/assets/images/splash-section-1.svg';
-import splashSection2 from '../../../app/assets/images/splash-section-2.svg';
-import splashSection3 from '../../../app/assets/images/splash-section-3.svg';
 
 class Splash extends React.Component{
     constructor(props){
@@ -25,7 +18,7 @@ class Splash extends React.Component{
                 <header className='splash-header'>
                     <div className='splash-container'>
                         <div className='splash-logo'>
-                            <img src={logo} width="31" height="24"/>
+                            <img src={window.logo} width="31" height="24"/>
                             <span>Datcord</span>
                         </div>
                         <nav className='navbar'>
@@ -40,9 +33,9 @@ class Splash extends React.Component{
                     </div>
                 </header>
                 <div className='splash-banner'>
-                    <img className="splash-background" src={splashBackground} />
-                    <img className="splash-toon-right" src={splashright}/>
-                    <img className="splash-toon-left" src={splashleft} />
+                    <img className="splash-background" src={window.splash_background} />
+                    <img className="splash-toon-right" src={window.splash_right}/>
+                    <img className="splash-toon-left" src={window.splash_left} />
                     <div className='splash-banner-content'>
                         <h1>IMAGINE A PLACE...</h1>
                         <p>...where you can belong to a school club, a gaming group, 
@@ -55,7 +48,7 @@ class Splash extends React.Component{
                     <div className='splash-section-1'>
                         <div className='splash-section-container'>
                             <div className='splash-section-img-container'>
-                                <img className="splash-section-1-img" src={splashSection1} />
+                                <img className="splash-section-1-img" src={window.splash_section_1} />
                             </div>
                             <div className="splash-section-content">
                                 <h2>Create an invite-only place where you belong</h2>
@@ -74,14 +67,14 @@ class Splash extends React.Component{
                                     instantly pop in to talk without having to call.</p>
                             </div>
                             <div className='splash-section-img-container'>
-                                <img className="splash-section-2-img" src={splashSection2} />
+                                <img className="splash-section-2-img" src={window.splash_section_2} />
                             </div>
                         </div>
                     </div>
                     <div className='splash-section-3'>
                         <div className='splash-section-container'>
                             <div className='splash-section-img-container'>
-                                <img className="splash-section-3-img" src={splashSection3} />
+                                <img className="splash-section-3-img" src={window.splash_section_3} />
                             </div>
                             <div className="splash-section-content">
                                 <h2>From few to a fandom</h2>
@@ -127,7 +120,7 @@ class Splash extends React.Component{
                             </div>
                             <div className='footer-ending'>
                                 <div className='splash-logo'>
-                                    <img src={logo} width="31" height="24" />
+                                    <img src={window.logo} width="31" height="24" />
                                     <span>Datcord</span>
                                 </div>
                                 <div className='splash-button-container'>

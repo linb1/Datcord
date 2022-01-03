@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom"
-import background from '../../../app/assets/images/background-session.png';
 class LoginForm extends React.Component {
     constructor(props) {
         super(props);
@@ -113,15 +112,41 @@ class LoginForm extends React.Component {
         }
     }
 
+    inputDecider(input = "", errors = []){
+        let errorClass = "";
+        let error = errors[0];
+        if (input === "") {
+            errorClass = "error";
+            error = "This field is invalid";
+        } else if (errors.length !== 0){
+            errorClass = "error";
+        } else {
+            errorClass = "";
+        }
+
+        if (errorClass = "error"){
+            return (
+                <div className="login-form-inputs">
+                    <label className={errorClass}>EMAIL <span>{error}</span></label>
+                    <input
+                        className={emailErrorClass}
+                        type="text"
+                        value={this.state.email}
+                        onChange={this.handleChange("email")}
+                    />
+                </div>
+            );
+        }
+    }
+
     render() {
-        // debugger;
         const emailError = this.remakeRenderError("email");
         const passwordError = this.remakeRenderError("password");
         const emailErrorClass = this.remakeSetErrorClass(emailError);
         const passwordErrorClass = this.remakeSetErrorClass(passwordError);
         return (
             <div className="login">
-                <img className="background" src={background} />
+                <img className="background" src={window.background_session} />
                 <div className="login-form-container">
                     <form className="login-form"> 
                         <div className="login-form-header">

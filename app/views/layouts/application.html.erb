@@ -6,8 +6,18 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag 'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
+    <script type="text/javascript">
+      window.background_session = "<%= image_url('background-session.png') %>";
+      window.logo = "<%= image_url('logo.png') %>";
+      window.splash_background = "<%= image_url('splash-background.svg') %>";
+      window.splash_left = "<%= image_url('splash-left.svg') %>";
+      window.splash_right = "<%= image_url('splash-right.svg') %>";
+      window.splash_section_1 = "<%= image_url('splash-section-1.svg') %>";
+      window.splash_section_2 = "<%= image_url('splash-section-2.svg') %>";
+      window.splash_section_3 = "<%= image_url('splash-section-3.svg') %>";
+    </script>
+    <%= stylesheet_link_tag 'application', media: 'all' %>
     <link href="http://fonts.cdnfonts.com/css/whitney-2" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

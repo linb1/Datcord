@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom"
-import background from '../../../app/assets/images/background-session.png';
 class SignupForm extends React.Component {
     constructor(props) {
         super(props);
@@ -51,7 +50,6 @@ class SignupForm extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault();
-        // debugger;
         this.props.signup(this.stateWithDOB()).then(() => this.props.history.push('/@me'));
         this.betterRenderError();
     }
@@ -213,7 +211,7 @@ class SignupForm extends React.Component {
         );
         return (
             <div className="signup">
-                <img className="background" src={background} />
+                <img className="background" src={window.background_session} />
                 <div className="signup-form-container">
                     <form className="signup-form">
                         <div className="signup-form-header">
