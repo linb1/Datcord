@@ -6,10 +6,15 @@ class LoginForm extends React.Component {
         super(props);
         this.state = {
             email: "",
-            password: ""
+            password: "",
+            emailError: <></>,
+            passwordError: <></>,
+            emailErrorClass: "",
+            passwordErrorClass: ""
         };
         this.handleSubmit = this.handleSubmit.bind(this)
         this.handleDemoLogin = this.handleDemoLogin.bind(this)
+        this.betterRenderError = this.betterRenderError.bind(this)
     }
 
     componentDidMount(){
@@ -24,8 +29,12 @@ class LoginForm extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault();
-        const user = Object.assign({}, this.state);
+        const user = {
+            email: this.state.email,
+            password: this.state.password
+        }
         this.props.login(user).then(() => this.props.history.push('/@me'));
+        this.betterRenderError();
     }
 
     handleDemoLogin(e){
@@ -33,7 +42,7 @@ class LoginForm extends React.Component {
         this.props.login({email: "demo@email.com", password: "password"}).then(() => this.props.history.push('/@me'));
     }
 
-    renderError() {
+    renderError() { // dont need for now
         return (
             <ul>
                 {this.props.errors.map((error, i) => (
@@ -45,8 +54,71 @@ class LoginForm extends React.Component {
         );
     }
 
+    betterRenderError(){
+        if (this.state.email === ""){
+            let error = "This field is required"
+            this.setState({ emailError: <span>- {error}</span>});
+            this.setState({emailErrorClass: "error"});
+        } else if (this.props.errors.length !== 0) {
+            this.setState({ emailError: <span>- {this.props.errors[0]}</span> });
+            this.setState({ emailErrorClass: "error" });
+        } else {
+            this.setState({ emailError: <></> });
+            this.setState({ emailErrorClass: "" });
+        }
+
+        if (this.state.password === ""){
+            let error = "This field is required";
+            this.setState({ passwordError: <span>- {error}</span> });
+            this.setState({ passwordErrorClass: "error" });
+        } else if (this.props.errors.length !== 0) {
+            this.setState({ passwordError: <span>- {this.props.errors[0]}</span> });
+            this.setState({ passwordErrorClass: "error" });
+        } else {
+            this.setState({ passwordError: <></> });
+            this.setState({ passwordErrorClass: "" });
+        }
+    }
+
+    remakeRenderError(field){
+        switch(field){
+            case "email":
+                if ((this.state.email === "") && (this.props.errors.length !== 0)) {
+                    let error = "This field is required"
+                    return <span>- {error}</span>;
+                } else if (this.props.errors.length !== 0) {
+                    return <span>- {this.props.errors[0]}</span>;
+                } else {
+                    return <></>;
+                }
+            case "password":
+                if ((this.state.password === "") && (this.props.errors.length !== 0)) {
+                    let error = "This field is required"
+                    return <span>- {error}</span>;
+                } else if (this.props.errors.length !== 0) {
+                    return <span>- {this.props.errors[0]}</span>;
+                } else {
+                    return <></>;
+                }
+            default:
+                return null;
+        }
+    }
+
+    remakeSetErrorClass(error){
+        if (error.type === "span"){
+            return "error";
+        } else {
+            return "";
+        }
+    }
+
     render() {
         // debugger;
+        const emailError = this.remakeRenderError("email");
+        const passwordError = this.remakeRenderError("password");
+        const emailErrorClass = this.remakeSetErrorClass(emailError);
+        const passwordErrorClass = this.remakeSetErrorClass(passwordError);
         return (
             <div className="login">
                 <img className="background" src={background} />
@@ -57,21 +129,21 @@ class LoginForm extends React.Component {
                             <h2>We're so excited to see you again!</h2>
                         </div>
                         <div className="login-form-inputs">
-                            <label>EMAIL</label>
+                            <label className={emailErrorClass}>EMAIL {emailError}</label>
                             <input
-                                    className="login-email"
-                                    type="text"
-                                    value={this.state.email}
-                                    onChange={this.handleChange("email")}
+                                className={emailErrorClass}
+                                type="text"
+                                value={this.state.email}
+                                onChange={this.handleChange("email")}
                             />
                         </div>
                         <div className="login-form-inputs">
-                            <label>PASSWORD</label>
+                            <label className={passwordErrorClass}>PASSWORD {passwordError}</label>
                             <input
-                                    className="login-password"
-                                    type="password"
-                                    value={this.state.password}
-                                    onChange={this.handleChange("password")}
+                                className={passwordErrorClass}
+                                type="password"
+                                value={this.state.password}
+                                onChange={this.handleChange("password")}
                             />
                         </div>
                         <div className="login-form-button-container">

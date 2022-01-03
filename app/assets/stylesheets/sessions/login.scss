@@ -66,6 +66,13 @@
             margin: 0px 0px 8px 0px;
             width: auto;
         }
+
+        label.error{
+            color: red;
+            span{
+                font-style: italic;
+            }
+        }
     
         input{
             width: 100%;
@@ -84,10 +91,14 @@
         input:hover{
             border-color: black;
         }
-
+        
         input:focus{
             outline: none;
             border-color: #01AEF4;
+        }
+        
+        input.error, input.error:hover, input.error:focus{
+            border-color: red;
         }
     }
 
@@ -112,6 +123,7 @@
 
 
 }
+
 
 .login-form-header{
     display: flex;
