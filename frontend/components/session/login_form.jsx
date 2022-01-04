@@ -5,15 +5,10 @@ class LoginForm extends React.Component {
         super(props);
         this.state = {
             email: "",
-            password: "",
-            emailError: <></>,
-            passwordError: <></>,
-            emailErrorClass: "",
-            passwordErrorClass: ""
+            password: ""
         };
         this.handleSubmit = this.handleSubmit.bind(this)
         this.handleDemoLogin = this.handleDemoLogin.bind(this)
-        this.betterRenderError = this.betterRenderError.bind(this)
     }
 
     componentDidMount(){
@@ -28,20 +23,22 @@ class LoginForm extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault();
+
         const user = {
             email: this.state.email,
             password: this.state.password
         }
+
         this.props.login(user).then(() => this.props.history.push('/@me'));
-        this.betterRenderError();
     }
+
 
     handleDemoLogin(e){
         e.preventDefault();
         this.props.login({email: "demo@email.com", password: "password"}).then(() => this.props.history.push('/@me'));
     }
 
-    renderError() { // dont need for now
+    renderError() { //dont need right now
         return (
             <ul>
                 {this.props.errors.map((error, i) => (
@@ -52,98 +49,55 @@ class LoginForm extends React.Component {
             </ul>
         );
     }
-
-    betterRenderError(){
-        if (this.state.email === ""){
-            let error = "This field is required"
-            this.setState({ emailError: <span>- {error}</span>});
-            this.setState({emailErrorClass: "error"});
-        } else if (this.props.errors.length !== 0) {
-            this.setState({ emailError: <span>- {this.props.errors[0]}</span> });
-            this.setState({ emailErrorClass: "error" });
-        } else {
-            this.setState({ emailError: <></> });
-            this.setState({ emailErrorClass: "" });
-        }
-
-        if (this.state.password === ""){
-            let error = "This field is required";
-            this.setState({ passwordError: <span>- {error}</span> });
-            this.setState({ passwordErrorClass: "error" });
-        } else if (this.props.errors.length !== 0) {
-            this.setState({ passwordError: <span>- {this.props.errors[0]}</span> });
-            this.setState({ passwordErrorClass: "error" });
-        } else {
-            this.setState({ passwordError: <></> });
-            this.setState({ passwordErrorClass: "" });
-        }
-    }
-
-    remakeRenderError(field){
+  
+    createErrorComponent(field){
         switch(field){
             case "email":
-                if ((this.state.email === "") && (this.props.errors.length !== 0)) {
-                    let error = "This field is required"
-                    return <span>- {error}</span>;
-                } else if (this.props.errors.length !== 0) {
-                    return <span>- {this.props.errors[0]}</span>;
-                } else {
+                const emailErrors = this.props.errors.filter(error => error.includes("Email"));
+                if (emailErrors.length === 0) {
                     return <></>;
+                } else {
+                    for (let error of emailErrors) {
+                        if (error.includes("blank")) {
+                            let blankError = "This field is required"
+                            return <span>- {blankError}</span>;
+                        }
+
+                        if (error.includes("invalid")) {
+                            return <span>- {error}</span>;
+                        }
+                    }
                 }
             case "password":
-                if ((this.state.password === "") && (this.props.errors.length !== 0)) {
-                    let error = "This field is required"
-                    return <span>- {error}</span>;
-                } else if (this.props.errors.length !== 0) {
-                    return <span>- {this.props.errors[0]}</span>;
-                } else {
+                const passwordErrors = this.props.errors.filter(error => error.includes("password"));
+                if (passwordErrors.length === 0) {
                     return <></>;
+                } else {
+                    for (let error of passwordErrors) {
+                        if (error.includes("blank")) {
+                            let blankError = "This field is required"
+                            return <span>- {blankError}</span>;
+                        }
+
+                        if (error.includes("invalid")) {
+                            return <span>- {error}</span>;
+                        }
+                    }
                 }
             default:
-                return null;
+                return <></>;
         }
     }
 
-    remakeSetErrorClass(error){
-        if (error.type === "span"){
-            return "error";
-        } else {
-            return "";
-        }
-    }
-
-    inputDecider(input = "", errors = []){
-        let errorClass = "";
-        let error = errors[0];
-        if (input === "") {
-            errorClass = "error";
-            error = "This field is invalid";
-        } else if (errors.length !== 0){
-            errorClass = "error";
-        } else {
-            errorClass = "";
-        }
-
-        if (errorClass = "error"){
-            return (
-                <div className="login-form-inputs">
-                    <label className={errorClass}>EMAIL <span>{error}</span></label>
-                    <input
-                        className={emailErrorClass}
-                        type="text"
-                        value={this.state.email}
-                        onChange={this.handleChange("email")}
-                    />
-                </div>
-            );
-        }
+    setErrorClass(error){
+        return (error.type === "span") ? "error" : "";
     }
 
     render() {
-        const emailError = this.remakeRenderError("email");
-        const passwordError = this.remakeRenderError("password");
-        const emailErrorClass = this.remakeSetErrorClass(emailError);
-        const passwordErrorClass = this.remakeSetErrorClass(passwordError);
+        const emailError = this.createErrorComponent("email");
+        const passwordError = this.createErrorComponent("password");
+        const emailErrorClass = this.setErrorClass(emailError);
+        const passwordErrorClass = this.setErrorClass(passwordError);
         return (
             <div className="login">
                 <img className="background" src={window.background_session} />
@@ -177,7 +131,7 @@ class LoginForm extends React.Component {
                                 <span>Need an Account?&nbsp;&nbsp;&nbsp;</span>
                                 <Link className="signup-link" to="/signup">Register</Link>
                             </div>
-                            {this.renderError()}
+                            {/* {this.renderError()} */}
                         </div>
                     </form>
                     <div className="login-form-demo">

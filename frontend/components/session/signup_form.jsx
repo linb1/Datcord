@@ -9,23 +9,11 @@ class SignupForm extends React.Component {
             password: "",
             birthMonth: null,
             birthDay: null,
-            birthYear: null,
-            emailError: <></>,
-            passwordError: <></>,
-            usernameError: <></>,
-            dobError: <></>,
-            emailErrorClass: "",
-            passwordErrorClass: "",
-            usernameErrorClass: "",
-            dobErrorClass: ""
+            birthYear: null
         };
         this.handleSubmit = this.handleSubmit.bind(this)
         this.stateWithDOB = this.stateWithDOB.bind(this)
-        this.betterRenderError = this.betterRenderError.bind(this)
-        this.handleUsernameError = this.handleUsernameError.bind(this)
-        this.handlePasswordError = this.handlePasswordError.bind(this)
-        this.handleEmailError = this.handleEmailError.bind(this)
-        this.handleDobError = this.handleDobError.bind(this)
+
     }
 
     componentDidMount() {
@@ -51,10 +39,9 @@ class SignupForm extends React.Component {
     handleSubmit(e) {
         e.preventDefault();
         this.props.signup(this.stateWithDOB()).then(() => this.props.history.push('/@me'));
-        this.betterRenderError();
     }
 
-    renderError() {
+    renderError() { // not used right now
         return (
             <ul>
                 {this.props.errors.map((error, i) => (
@@ -66,149 +53,121 @@ class SignupForm extends React.Component {
         );
     }
 
-    handleUsernameError(error = false){
-        if (this.state.username === "") {
-            error = "This field is required"
-            this.setState({ usernameError: <span>- {error}</span> });
-            this.setState({ usernameErrorClass: "error" });
-        } else if (error) {
-            this.setState({ usernameError: <span>- {error}</span> });
-            this.setState({ usernameErrorClass: "error" });
-        } else {
-            this.setState({ usernameError: <></> });
-            this.setState({ usernameErrorClass: "" });
+    createErrorComponent(field){
+        switch(field){
+            case "email":
+                const emailErrors = this.props.errors.filter(error => error.includes("Email"));
+                if (emailErrors.length === 0 ){
+                    return <></>;
+                } else {
+                    for (let error of emailErrors){
+                        if(error.includes("blank")){
+                            let blankError = "This field is required"
+                            return <span>- {blankError}</span>;
+                        }
+
+                        if (error.includes("invalid")) {
+                            return <span>- {error}</span>;
+                        }
+
+                        if (error.includes("taken")) {
+                            return <span>- {error}</span>;
+                        }
+                    }
+                }
+            case "username":
+                const usernameErrors = this.props.errors.filter(error => error.includes("Username"));
+                if (usernameErrors.length === 0) {
+                    return <></>;
+                }
+                for (let error of usernameErrors) {
+                    if (error.includes("blank")) {
+                        let blankError = "This field is required"
+                        return <span>- {blankError}</span>;
+                    }
+                    if (error.includes("short")) {
+                        return <span>- {error}</span>;
+                    }
+                }
+            case "password":
+                const passwordErrors = this.props.errors.filter(error => error.includes("Password"));
+                if (passwordErrors.length === 0) {
+                    return <></>;
+                }
+                for (let error of passwordErrors) {
+                    if (error.includes("blank")) {
+                        let blankError = "This field is required"
+                        return <span>- {blankError}</span>;
+                    }
+                    if (error.includes("short")) {
+                        return <span>- {error}</span>;
+                    }
+                }
+            case "dob":
+                const dobErrors = this.props.errors.filter(error => error.includes("Date of birth"));
+                if (dobErrors.length === 0) {
+                    return <></>;
+                } else if (dobErrors.length > 0) {
+                    return <span>- {dobErrors[0]}</span>;
+                }
+            default:
+                return <></>;
         }
     }
 
-    handlePasswordError(error){
-        if (this.state.password === "") {
-            error = "This field is required";
-            this.setState({ passwordError: <span>- {error}</span> });
-            this.setState({ passwordErrorClass: "error" });
-        } else if (error) {
-            this.setState({ passwordError: <span>- {error}</span> });
-            this.setState({ passwordErrorClass: "error" });
-        } else {
-            this.setState({ passwordError: <></> });
-            this.setState({ passwordErrorClass: "" });
-        }
+    setErrorClass(error) {
+        return (error.type === "span") ? "error" : "";
     }
 
-    handleEmailError(error){
-        if (this.state.email === "") {
-            error = "This field is required";
-            this.setState({ emailError: <span>- {error}</span> });
-            this.setState({ emailErrorClass: "error" });
-        } else if (error) {
-            this.setState({ emailError: <span>- {error}</span> });
-            this.setState({ emailErrorClass: "error" });
-        } else {
-            this.setState({ emailError: <></> });
-            this.setState({ emailErrorClass: "" });
-        }
-    }
-
-    handleDobError(error){
-        if ((this.state.birthYear == null) || (this.state.birthMonth == null) || (this.state.birthDay == null)){
-            error = "This field is required";
-            this.setState({ dobError: <span>- {error}</span> });
-            this.setState({ dobErrorClass: "error" });
-        } else {
-            this.setState({ dobError: <></> });
-            this.setState({ dobErrorClass: "" });
-        }
-    }
-
-    betterRenderError() {
-        const errors = this.props.errors.filter(error => error.includes("blank"))
-        this.props.errors.forEach(error => {
-            if (error.includes("Username")){
-                this.handleUsernameError(error)
-            }
-
-            if (error.includes("Password")) {
-                this.handlePasswordError(error)
-            }
-
-            if (error.includes("Email")) {
-                this.handleEmailError(error)
-            }
-
-            if (error.includes("Date of birth")) {
-                this.handleDobError(error)
-            }
+    createSelect(){
+        const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+        const monthIndex = [...Array(12).keys()];
+        const dayIndex = [...Array(31).keys()];
+        const yearIndex = [...Array(150).keys()];
+        const minimumAgeYear = new Date().getFullYear() - 3;
+        const monthOptions = monthIndex.map(monthIdx => {
+            return <option key={monthIdx} value={monthIdx+1}>{months[monthIdx]}</option>
+        })
+        const dayOptions = dayIndex.map(dayIdx => {
+            return <option key={dayIdx} value={dayIdx+1}>{dayIdx+1}</option>
+        })
+        const yearOptions = yearIndex.map(yearIdx => {
+            return <option key={yearIdx} value={minimumAgeYear - yearIdx}>{minimumAgeYear - yearIdx}</option>
         })
 
-        this.handleUsernameError();
-        this.handlePasswordError();
-        this.handleEmailError();
-        this.handleUsernameError();
+        const selects = (
+            <div className="signup-form-select">
+                <select className="select-month" onChange={this.handleChange("birthMonth")} defaultValue="Select" >
+                    <option key="select" disabled hidden>Select</option>
+                    {monthOptions}
+                </select>
+                <select className="select-day" onChange={this.handleChange("birthDay")} defaultValue="Select" >
+                    <option key="select" disabled hidden>Select</option>
+                    {dayOptions}
+                </select>
+                <select className="select-year" onChange={this.handleChange("birthYear")} defaultValue="Select" >
+                    <option key="select" disabled hidden>Select</option>
+                    {yearOptions}
+                </select>
+            </div>
+        )
 
+        return selects;
     }
 
-    // remakeRenderError(field, errors){
-    //     switch(field){
-    //         case "username":
-    //             if (errors.length === 0){
-    //                 return <></>;
-    //             }
-    //             errors.forEach(error => {
-    //                 if (error.includes("blank")){
-    //                     return <span>- {"This field is required"}</span>
-    //                 }
-    //             })
 
-    //             return
-    //     }
-    // }
 
     render() {
+        const emailError = this.createErrorComponent("email");
+        const passwordError = this.createErrorComponent("password");
+        const usernameError = this.createErrorComponent("username");
+        const dobError = this.createErrorComponent("dob");
 
-        // const errors = this.props.errors;
-        // let usernameErrors = [];
-        // let passwordErrors = [];
-        // let emailErrors = [];
-        // let dobErrors = [];
+        const emailErrorClass = this.setErrorClass(emailError);
+        const passwordErrorClass = this.setErrorClass(passwordError);
+        const usernameErrorClass = this.setErrorClass(usernameError);
+        const dobErrorClass = this.setErrorClass(dobError);
 
-        // errors.forEach(error => {
-        //     if (error.includes("Username")){
-        //         usernameErrors.push(error)
-        //     }
-        //     if (error.includes("Password")) {
-        //         passwordErrors.push(error)
-        //     }
-        //     if (error.includes("Email")) {
-        //         emailErrors.push(error)
-        //     }
-        //     if (error.includes("Date of birth")) {
-        //         dobErrors.push(error)
-        //     }
-        // })
-
-        //selects
-        const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-        const selectMonth = (
-            <select className="select-month" defaultValue="Select" onChange={this.handleChange("birthMonth")}>
-                <option hidden disabled>Select</option>
-                {[...Array(12).keys()].map(month => <option key={"month-" + (month + 1)} value={month + 1}>{months[month]}</option>)}
-            </select>
-        );
-
-        const selectDay = (
-            <select className="select-day" defaultValue="Select" onChange={this.handleChange("birthDay")}>
-                <option hidden disabled>Select</option>
-                {[...Array(31).keys()].map(day => <option key={"day-" + (day + 1)} value={day + 1}>{day + 1}</option>)}
-            </select>
-        );
-
-        const earliestYear = new Date().getFullYear() - 3;
-
-        const selectYear = (
-            <select className="select-year" defaultValue="Select" onChange={this.handleChange("birthYear")}>
-                <option hidden disabled>Select</option>
-                {[...Array(150).keys()].map(year => <option key={"year-" + (earliestYear - year)} value={earliestYear - year}>{earliestYear - year}</option>)}
-            </select>
-        );
         return (
             <div className="signup">
                 <img className="background" src={window.background_session} />
@@ -218,46 +177,50 @@ class SignupForm extends React.Component {
                             <h1>Create an account</h1>
                         </div>
                         <div className="signup-form-inputs">
-                            <label className={this.state.emailErrorClass}>EMAIL {this.state.emailError}</label>
+                            <label className={emailErrorClass}>EMAIL {emailError}</label>
                             <input
-                                className={this.state.emailErrorClass}
+                                className={emailErrorClass}
                                 type="text"
                                 value={this.state.email}
                                 onChange={this.handleChange("email")}
                             />
+                            {/* <div className="error-modal-anchor">
+                                <div className="error-modal-container">
+                                    <div className={`error-modal ${emailErrorClass}-timeout`}>
+                                        <img src={window.error_modal_icon} width="20" height="20"/>
+                                        <span>Please include an '@' in the email address. 'input' is missing an '@'. </span>
+                                    </div>
+                                </div>
+                            </div> */}
                         </div>
                         <div className="signup-form-inputs">
-                            <label className={this.state.usernameErrorClass}>USERNAME {this.state.usernameError}</label>
+                            <label className={usernameErrorClass}>USERNAME {usernameError}</label>
                             <input
-                                className={this.state.usernameErrorClass}
+                                className={usernameErrorClass}
                                 type="text"
                                 value={this.state.username}
                                 onChange={this.handleChange("username")}
                             />
                         </div>
                         <div className="signup-form-inputs">
-                            <label className={this.state.passwordErrorClass}>PASSWORD {this.state.passwordError}</label>
+                            <label className={passwordErrorClass}>PASSWORD {passwordError}</label>
                             <input
-                                className={this.state.passwordErrorClass}
+                                className={passwordErrorClass}
                                 type="password"
                                 value={this.state.password}
                                 onChange={this.handleChange("password")}
                             />
                         </div>
                         <div className="signup-form-select-container">
-                            <label className={this.state.dobErrorClass}>DATE OF BIRTH {this.state.dobError}</label>
-                            <div className="signup-form-select">
-                                {selectMonth}
-                                {selectDay}
-                                {selectYear}
-                            </div>
+                            <label className={dobErrorClass}>DATE OF BIRTH {dobError}</label>
+                            {this.createSelect()}
                         </div>
                         <div className="signup-form-button-container">
                             <button onClick={this.handleSubmit}>Continue</button>
                             <div className="signup-form-link">
                                 <Link className="login-link" to="/login">Already have an account?</Link> 
                             </div>
-                            {this.renderError()}
+                            {/* {this.renderError()} */}
                         </div>
                     </form>
                 </div>

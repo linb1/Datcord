@@ -86,11 +86,11 @@
     }
 
     label.error{
-            color: red;
-            span{
-                font-style: italic;
-            }
+        color: red;
+        span{
+            font-style: italic;
         }
+    }
     
     input{
         width: 100%;
@@ -114,6 +114,11 @@
         outline: none;
         border-color: #01AEF4;
     }
+
+    input.error, input.error:hover, input.error:focus{
+        border-color: red;
+    }
+
 }
 
 .signup-form-select-container{
@@ -128,6 +133,12 @@
         font-size: 13px;
         margin: 0px 0px 8px 0px;
         width: auto;
+    }
+    label.error{
+        color: red;
+        span{
+            font-style: italic;
+        }
     }
 
 }
@@ -202,3 +213,53 @@
     }
 }
 }
+
+
+
+
+//error modal - tbd
+.error-modal-anchor{
+    // border: 2px solid red;
+    position: relative;
+}
+.error-modal-container{
+    position: absolute;
+    top: 10px;
+}
+.error-modal{
+    visibility: hidden;
+}
+
+.error-modal.error-timeout{
+    visibility: visible;
+    // max-width: 300px;
+    display: inline-block;
+    padding: 5px;
+    // border: 2px solid green;
+    position: relative;
+    background-color: white;
+    z-index: 1;
+    border: 1px solid #b2b2b2;
+    border-radius: 3px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    column-gap: 10px;
+    font-family: 'Whitney Book', sans-serif;
+    font-size: 14px;
+}
+
+.error-modal:before{
+
+    content: "";
+    width: 20px;
+    height: 20px;
+    background-color: white;
+    position: absolute;
+    top: -10%;
+    left: 7%;
+    transform: translateX(50%) rotate(45deg);
+    z-index: -1;
+    // border-left: 1px solid #b2b2b2;
+}
+// error modal
