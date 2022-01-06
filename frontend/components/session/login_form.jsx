@@ -29,13 +29,13 @@ class LoginForm extends React.Component {
             password: this.state.password
         }
 
-        this.props.login(user).then(() => this.props.history.push('/@me'));
+        this.props.login(user).then(() => this.props.history.push('/channel/@me'));
     }
 
 
     handleDemoLogin(e){
         e.preventDefault();
-        this.props.login({email: "demo@email.com", password: "password"}).then(() => this.props.history.push('/@me'));
+        this.props.login({email: "demo@email.com", password: "password"}).then(() => this.props.history.push('/channel/@me'));
     }
 
     renderError() { //dont need right now

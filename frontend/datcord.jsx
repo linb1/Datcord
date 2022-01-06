@@ -1,6 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import {login, logout, signup} from "./actions/session_actions";
+import {requestServer, requestServers, createServer, deleteServer} from "./actions/server_actions"
+import { requestChannel, requestChannels, createChannel, deleteChannel } from "./actions/channel_actions"
 import configureStore from "./store/store"
 import Root from "./components/root";
 
@@ -24,5 +26,15 @@ document.addEventListener("DOMContentLoaded", () => {
     window.login = login;
     window.logout = logout;
     window.signup = signup;
+    //
+    window.requestServer = requestServer;
+    window.requestServers = requestServers;
+    window.createServer = createServer;
+    window.deleteServer = deleteServer;
+    //
+    window.requestChannel = requestChannel;
+    window.requestChannels = requestChannels;
+    window.createChannel = createChannel;
+    window.deleteChannel = deleteChannel;
     ReactDOM.render(<Root store={store} />, root);
 });

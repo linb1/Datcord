@@ -1,5 +1,7 @@
 import React from 'react';
-
+import ServerContainer from '../server/server_index_container';
+import { Route, Switch, Redirect } from 'react-router-dom';
+import Channel from '../channel/channel';
 class Home extends React.Component {
     constructor(props) {
         super(props);

@@ -38,7 +38,7 @@ class SignupForm extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault();
-        this.props.signup(this.stateWithDOB()).then(() => this.props.history.push('/@me'));
+        this.props.signup(this.stateWithDOB()).then(() => this.props.history.push('/channel/@me'));
     }
 
     renderError() { // not used right now

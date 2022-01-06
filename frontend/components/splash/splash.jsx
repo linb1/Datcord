@@ -9,7 +9,7 @@ class Splash extends React.Component{
     render(){
         const {currentUser, logout} = this.props;
         const splashButton = header => currentUser ? (
-                <Link className="splash-button" to="/@me">Open Datcord</Link>
+                <Link className="splash-button" to="/channel/@me">Open Datcord</Link>
         ) : (
                 header ? (<Link className="splash-button" to="/login">Login</Link>) : (<Link className="splash-button" to="/signup">Sign up</Link>)
         );
