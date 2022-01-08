@@ -24,10 +24,6 @@ const mapStateToProps = (state)=> {
 const mapDispatchToProps = (dispatch) => {
     return {
         requestServers: () => dispatch(requestServers()),
-        requestServer: (server) => dispatch(requestServer(server)),
-        createServer: (server) => dispatch(createServer(server)),
-        deleteServer: (serverId) => dispatch(deleteServer(serverId)),
-        clearServerErrors: () => dispatch(clearServerErrors()),
         clearServersFromState: () => dispatch(clearServersFromState()),
     }
 }

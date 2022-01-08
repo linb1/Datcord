@@ -3,6 +3,7 @@ import ReactDOM from "react-dom";
 import {login, logout, signup} from "./actions/session_actions";
 import {requestServer, requestServers, createServer, deleteServer} from "./actions/server_actions"
 import { requestChannel, requestChannels, createChannel, deleteChannel } from "./actions/channel_actions"
+import { createMembership, deleteMembership } from "./actions/membership_actions";
 import configureStore from "./store/store"
 import Root from "./components/root";
 
@@ -36,5 +37,8 @@ document.addEventListener("DOMContentLoaded", () => {
     window.requestChannels = requestChannels;
     window.createChannel = createChannel;
     window.deleteChannel = deleteChannel;
+    //
+    window.createMembership = createMembership;
+    window.deleteMembership = deleteMembership;
     ReactDOM.render(<Root store={store} />, root);
 });

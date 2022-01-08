@@ -29,8 +29,9 @@ class ServerIndex extends React.Component{
 
     render(){
         const server = this.props.servers.map((server, idx) => {
-            return <li key={idx}><ServerIndexItemContainer server={server}/></li>
+            return <li key={idx}><ServerIndexItemContainer current_user_id={this.props.current_user_id} server={server}/></li>
         })
+        // debugger;
         return (
             <div>
                 <span>------------</span>

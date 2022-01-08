@@ -1,8 +1,8 @@
 import React from "react";
 
-class ServerForm extends React.Component{
+class ChannelForm extends React.Component {
 
-    constructor(props){
+    constructor(props) {
         super(props);
         this.state = {
             name: ""
@@ -10,41 +10,36 @@ class ServerForm extends React.Component{
         this.handleSubmit = this.handleSubmit.bind(this)
     }
 
-    handleChange(field){
+    handleChange(field) {
         return (e) => {
             this.setState({ [field]: e.currentTarget.value })
         }
     }
 
-    handleSubmit(){
-        const server = {
+    handleSubmit() {
+        const channel = {
             name: this.state.name,
-            owner_id: this.props.current_user_id
+            server_id: this.props.current_server_id
         }
         this.setState({ name: "" })
-        this.props.clearChannelsFromState();
-        this.props.createServer(server).then(response => {
-            // debugger;
-            this.props.history.push(`/channel/${response.server.id}`)
-            }
-        );
+        this.props.createChannel(channel);
     }
 
-    render(){
+    render() {
         // debugger
-        return(
+        return (
             <div>
                 <form>
-                    <label>Server Name</label>
+                    <label>Channel Name</label>
                     <input
                         type="text"
                         value={this.state.name}
                         onChange={this.handleChange("name")}
                     />
-                    <button onClick={this.handleSubmit}>Create Server</button>
+                    <button onClick={this.handleSubmit}>Create Channel</button>
                 </form>
             </div>
         )
     }
 }
-export default ServerForm
+export default ChannelForm

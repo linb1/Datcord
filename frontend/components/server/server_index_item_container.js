@@ -1,5 +1,7 @@
 import { connect } from "react-redux"
 import { requestServers, requestServer, createServer, deleteServer, clearServerErrors, clearServersFromState } from "../../actions/server_actions";
+import { clearChannelsFromState } from "../../actions/channel_actions";
+import { deleteMembership } from "../../actions/membership_actions";
 import ServerIndexItem from "./server_index_item"
 import { withRouter } from 'react-router-dom';
 
@@ -7,16 +9,17 @@ import { withRouter } from 'react-router-dom';
 
 const mapStateToProps = (state) => {
     return {
-        current_user_id: state.session.currentUserId,
-        servers: Object.values(state.entities.servers),
-        errors: state.errors.server,
+        
     }
 }
 const mapDispatchToProps = (dispatch) => {
     return {
+        requestServer: (serverId) => dispatch(requestServer(serverId)),
         deleteServer: (serverId) => dispatch(deleteServer(serverId)),
         clearServerErrors: () => dispatch(clearServerErrors()),
-        clearServersFromState: () => dispatch(clearServersFromState()),
+        clearChannelsFromState: () => dispatch(clearChannelsFromState()),
+        deleteMembership: (membership) => dispatch(deleteMembership(membership))
+
     }
 }
 

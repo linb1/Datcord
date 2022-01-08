@@ -3,11 +3,13 @@ import { combineReducers } from "redux";
 import usersReducer from "./users_reducer";
 import serversReducer from "./servers_reducer";
 import channelsReducer from "./channels_reducer";
+import membershipsReducer from "./memberships_reducer"
 
 const entitiesReducer = combineReducers({
     users: usersReducer,
     servers: serversReducer,
-    channels: channelsReducer
+    channels: channelsReducer,
+    // memberships: membershipsReducer
 });
 
 export default entitiesReducer;

@@ -1,7 +1,7 @@
 import React from 'react';
 import ServerContainer from '../server/server_index_container';
 import { Route, Switch, Redirect } from 'react-router-dom';
-import Channel from '../channel/channel';
+import Channel from '../channel/channel_index';
 class Home extends React.Component {
     constructor(props) {
         super(props);
@@ -24,6 +24,7 @@ class Home extends React.Component {
         return (
             <div>
                 {display}
+                <span>------------</span>
             </div>
         )
     }

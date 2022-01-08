@@ -6,5 +6,8 @@ Rails.application.routes.draw do
     resource :session, only: [:create, :destroy]
     resources :servers, only: [:create, :show, :index, :destroy]
     resources :channels, only: [:create, :show, :index, :destroy]
+    resources :memberships, only: [:create]
+
+    delete '/memberships', to: 'memberships#destroy'
   end
 end

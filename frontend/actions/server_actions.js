@@ -1,4 +1,5 @@
 import * as ServerApiUtil from "../util/server_api_util";
+import { receiveChannels } from "./channel_actions";
 
 export const RECEIVE_SERVERS = 'RECEIVE_SERVERS';
 export const RECEIVE_SERVER = 'RECEIVE_SERVER';
@@ -51,15 +52,17 @@ export const requestServers = () => dispatch => (
 );
 
 export const requestServer = (serverId) => dispatch => (
-    ServerApiUtil.requestServer(serverId).then(server => (
+    ServerApiUtil.requestServer(serverId).then(server => {
         dispatch(receiveServer(server))
-    ))
+        dispatch(receiveChannels(server.channels))
+    })
 );
 
 export const createServer = (server) => dispatch => (
-    ServerApiUtil.createServer(server).then(server => (
-        dispatch(receiveServer(server))
-    ), err => (
+    ServerApiUtil.createServer(server).then(server => {
+        dispatch(receiveChannels(server.channels))
+        return dispatch(receiveServer(server))
+    }, err => (
         dispatch(receiveServerErrors(err.responseJSON))
     ))
 );

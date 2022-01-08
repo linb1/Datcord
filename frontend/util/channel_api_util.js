@@ -1,7 +1,7 @@
 export const requestChannels = () => (
     $.ajax({
         method: "GET",
-        url: "api/channels"
+        url: "api/channels",
     })
 );
 
