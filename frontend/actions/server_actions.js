@@ -1,5 +1,6 @@
 import * as ServerApiUtil from "../util/server_api_util";
 import { receiveChannels } from "./channel_actions";
+import { receiveServerMembers } from "./user_actions";
 
 export const RECEIVE_SERVERS = 'RECEIVE_SERVERS';
 export const RECEIVE_SERVER = 'RECEIVE_SERVER';
@@ -53,8 +54,10 @@ export const requestServers = () => dispatch => (
 
 export const requestServer = (serverId) => dispatch => (
     ServerApiUtil.requestServer(serverId).then(server => {
+        // debugger
         dispatch(receiveServer(server))
         dispatch(receiveChannels(server.channels))
+        dispatch(receiveServerMembers(server.members))
     })
 );
 

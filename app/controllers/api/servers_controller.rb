@@ -30,7 +30,8 @@ class Api::ServersController < ApplicationController
     end
 
     def show
-        @server = Server.includes(:channels).find_by(id: params[:id])
+        @server = Server.includes(:channels, :members).find_by(id: params[:id])
+        # debugger
         render "api/servers/show"
     end
 

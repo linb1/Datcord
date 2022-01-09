@@ -3,6 +3,11 @@ import {Link} from "react-router-dom"
 
 class ServerIndexItem extends React.Component{
 
+    // componentDidMount(){
+    //     this.props.clearChannelsFromState()
+    //     this.props.requestServer(this.props.server.id)
+    // }
+
     deleteServer(){
         this.props.deleteServer(this.props.server.id).then(() => this.props.history.push('/channel/@me'));
     }
@@ -12,6 +17,7 @@ class ServerIndexItem extends React.Component{
     }
 
     fetchChannel(){
+        this.props.resetUserState(this.props.current_user_id)
         this.props.clearChannelsFromState()
         this.props.requestServer(this.props.server.id)
     }
