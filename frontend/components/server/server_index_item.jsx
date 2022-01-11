@@ -34,13 +34,40 @@ class ServerIndexItem extends React.Component{
         }
     }
 
+    createAcronymDefaultIcon(serverName){
+        const nameArray = serverName.split(" ");
+        let icon = "";
+        nameArray.forEach(word => {
+            const char = word[0];
+            icon += char;
+        });
+        return icon;
+    }
+
+    renderError() {
+        return (
+            <ul>
+                {this.props.errors.map((error, i) => (
+                    <li key={`error-${i}`}>
+                        {error}
+                    </li>
+                ))}
+            </ul>
+        );
+    }
+
     render(){
-        // debugger;
+        const channelId = Object.values(this.props.server.channels)[0].id
+        const icon = this.createAcronymDefaultIcon(this.props.server.name)
         return(
-            <div>
-                <Link to={`/channel/${this.props.server.id}`} onClick={this.fetchChannel.bind(this)}>{this.props.server.name}</Link>
+            <div className="server-list-item-container">
+                    <Link to={`/channel/${this.props.server.id}/${channelId}`} onClick={this.fetchChannel.bind(this)}>
+                        <div className="server-list-item">
+                            <span>{icon}</span>
+                        </div>
+                    </Link>
                 {/* <button onClick={this.deleteServer.bind(this)}>Delete {this.props.server.name}</button> */}
-                {this.deleteOrLeaveServer()}
+                {/* {this.deleteOrLeaveServer()} */}
             </div>
         );
     }

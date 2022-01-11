@@ -1,0 +1,59 @@
+.profile-container{
+    height: 52px;
+    background-color: #282B2F;
+    display: flex;
+    align-items: center;
+}
+
+.profile{
+    width: 100%;
+}
+
+.profile-content{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 10px;
+    padding-right: 10px;
+
+    button{
+        width: 75px;
+        height: 25px;
+        box-sizing: border-box;
+        padding: 5px;
+        font-size: 12px;
+        font-family: 'Whitney Book', sans-serif;
+        color: white;
+        border-radius: 3px;
+        border: none;
+        background-color: #5765F2;
+        cursor: pointer;
+        transition-duration: 0.2s;
+    }
+
+    button:hover{
+        background-color: #4752C4;
+    }
+}
+
+
+.profile-left{
+    // border: 2px solid red;
+    display: flex;
+    gap: 7px;
+    font-family: 'Whitney', sans-serif;
+    span{
+        color: white;
+        font-size: 14px;
+    }
+    p{
+        color: #B9BBBE;
+        font-size: 12px;
+    }
+}
+
+.profile-user{
+    // border: 2px solid green;
+    display: flex;
+    flex-direction: column;
+}

@@ -23,20 +23,38 @@ class ChannelForm extends React.Component {
         }
         this.setState({ name: "" })
         this.props.createChannel(channel);
+        this.props.setShowModal(prev => !prev);
+    }
+
+    catchServerError() {
+        if ((this.state.name.length < 1) || (this.state.name.length > 100)) {
+            return "error";
+        } else {
+            return "";
+        }
     }
 
     render() {
         // debugger
+        const error = this.catchServerError()
         return (
-            <div>
-                <form>
-                    <label>Channel Name</label>
-                    <input
-                        type="text"
-                        value={this.state.name}
-                        onChange={this.handleChange("name")}
-                    />
-                    <button onClick={this.handleSubmit}>Create Channel</button>
+            <div className="create-channel-form-container">
+                <form className="create-channel-form">
+                    <div className="create-channel-form-input">
+                        <label>CHANNEL NAME</label>
+                        <input
+                            type="text"
+                            value={this.state.name}
+                            onChange={this.handleChange("name")}
+                        />
+                    </div>
+                    <div className="create-channel-form-button-container">
+                        <div className="create-channel-form-button">
+                            <div className={`create-channel-form-button-wrapper ${error}`}>
+                                <button className={error} onClick={this.handleSubmit}>Create</button>
+                            </div>
+                        </div>
+                    </div>
                 </form>
             </div>
         )

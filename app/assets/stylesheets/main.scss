@@ -1,0 +1,145 @@
+.main{
+    // border: 2px solid red;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+}
+
+.server-index-container{
+    // height: 100%;
+    width: 72px;
+    // border: 2px solid green;
+    background-color: #202225;
+    color: white;
+}
+
+.server-index-content{
+    // border: 2px solid red;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.server-profile-container{
+    // border: 2px solid cyan;
+    height: 72px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.server-profile-icon{
+    // border: 2px solid pink;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #36393F;
+    border-radius: 50%;
+    transition-duration: 0.2s;
+    img{
+        filter: invert(90%);
+    }
+}
+
+.server-profile-icon:hover{
+    border-radius: 25%;
+    background-color: #5865F2;
+    img{
+        filter: invert(100%);
+    }
+}
+
+.seperator{
+    width: 32px;
+    height: 2px;
+    border-radius: 1px;
+    background-color: #36393F;
+    margin-bottom: 15px;
+}
+
+.server-index-list-container{
+    // border: 2px solid yellow;
+    width: 100%;
+    ul{
+        li{
+            // border: 2px solid blue;
+        }
+    }
+}
+
+.server-list-item-container{
+    // border: 2px solid cyan;
+    height: 48px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 10px;
+    a{
+        text-decoration: none;
+        color: #e8e8e8;
+        font-family: 'Whitney', sans-serif;
+        font-size: 18px;
+    }
+}
+
+.server-list-item{
+    // border: 2px solid red;
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #36393F;
+    overflow: hidden;
+    transition-duration: 0.2s;
+}
+
+.server-list-item:hover{
+    border-radius: 25%;
+    background-color: #5865F2;
+}
+
+.create-server-button-container{
+    // border: 2px solid cyan;
+    height: 48px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.create-server-button{
+    // border: 2px solid pink;
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    background-color: #36393F;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition-duration: 0.2s;
+    span{
+        line-height: 48px;
+        vertical-align: middle;
+        // border: 1px solid white;
+        color: #3BA55D;
+        font-size: 30px;
+        padding-bottom: 5px;
+    }
+}
+
+.create-server-button:hover{
+    border-radius: 25%;
+    background-color: #3BA55D;
+    span{
+        color: white;
+    }
+}
+
+.content{
+    width: calc(100vw - 72px);
+    // border: 2px solid blue;
+}

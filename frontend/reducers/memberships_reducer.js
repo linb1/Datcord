@@ -18,3 +18,5 @@ const membershipsReducer = (state = {}, action) => {
 };
 
 export default membershipsReducer;
+
+//not sure if this is even used

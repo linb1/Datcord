@@ -1,0 +1,33 @@
+
+
+.channel-container{
+    // border: 2px solid purple;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.channel-header{
+    // border: 2px solid red;
+    height: 48px;
+    font-family: 'Mukta', sans-serif;
+    font-weight: 500;
+    font-size: 18px;
+    color: white;
+    background-color: #36393E;
+    display: flex;
+    align-items: center;
+    box-shadow: 0px 1px 1px rgba(0, 0, 0, .30);
+    z-index: 2;
+    img{
+        margin-left: 20px;
+        margin-right: 10px;
+        filter: invert(50%);
+    }
+}
+
+.channel-content{
+    // border: 2px solid green;
+    height: 100%;
+    display: flex;
+}

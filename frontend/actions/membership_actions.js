@@ -25,3 +25,4 @@ export const deleteMembership = (membership) => dispatch => (
         dispatch(removeMembership(membership))
     ))
 );
+// dispatch to member reducer not needed?

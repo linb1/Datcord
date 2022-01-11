@@ -1,0 +1,95 @@
+.home-container{
+    // border: 2px solid green;
+    height: 100%;
+    display: flex;
+    position: relative;
+}
+
+.friend-section-container{
+    // border: 2px solid cyan;
+    width: 240px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.friend-header{
+    // border: 2px solid red;
+    height: 52px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-family: 'Mukta', sans-serif;
+    font-weight: 500;
+    font-size: 17px;
+    color: white;
+    box-shadow: 0px 1px 1px rgba(0, 0, 0, .3);
+    z-index: 2;
+    background-color: #2E3136;
+    span{
+        margin-left: 15px;
+    }
+}
+
+.friend-index-container{
+    // border: 2px solid green;
+    height: 100%;
+    background-color: #2E3136;
+}
+
+.friend-list-container{
+    // border: 2px solid cyan;
+    padding: 5px;
+    font-family: 'Whitney Book', sans-serif;
+    font-size: 16px;
+    color: #8E9296;
+    ul{
+        li{
+            padding: 5px;
+            display: flex;
+            align-items: center;
+            gap: 7px;
+        }
+    }
+}
+
+.join-seeded-server-container{
+    // border: 2px solid red;
+    width: 100%;
+    background-color: #36393E;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+}
+
+.join-seeded-server-header{
+    // border: 2px solid blue;
+    color: white;
+    font-family: "Whitney", sans-serif;
+    font-size: 48px;
+    text-align: center;
+}
+
+.join-seeded-server-button{
+    // border: 2px solid green;
+    button{
+        width: 300px;
+        height: 75px;
+        box-sizing: border-box;
+        padding: 10px;
+        font-size: 18px;
+        font-family: 'Whitney Book', sans-serif;
+        color: white;
+        border-radius: 7px;
+        border: none;
+        background-color: #5765F2;
+        cursor: pointer;
+        transition-duration: 0.2s;
+    }
+
+    button:hover{
+        background-color: #4752C4;
+    }
+}

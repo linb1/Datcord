@@ -1,23 +1,23 @@
 import React from "react";
-import HomeContainer from "./../home/home_container"
-import { Route, Switch, Redirect } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import ServerIndexContainer from '../server/server_index_container';
-import ChannelIndexContainer from "../channel/channel_index_container";
-import ChannelContent from "../content/channel_content";
-import ServerContent from "../content/server_content";
+import HomeContent from "../content/home_content";
+import HomeContentContainer from "../content/home_content_container"
+import ServerContentContainer from "../content/server_content_container"
 class Main extends React.Component{
 
     render(){
         return(
-            <div>
-                This is the main page that holds everything (should always have servers showing)
-                <ServerIndexContainer/>
-                {/* <Route path="/channel/:serverId" component={ServerIndexContainer}/> */}
-                <Switch>
-                    <Route exact path="/channel/@me" component={HomeContainer} />
-                    <Route path="/channel/:serverId" component={ServerContent} />
-                    {/* <Route path="/channel/:serverId/:channelId" component={ChannelContent} />  */}
-                </Switch>
+            <div className="main">
+                <div className="server-index-container">
+                    <ServerIndexContainer/>
+                </div>
+                <div className="content">
+                    <Switch>
+                        <Route exact path="/channel/@me" component={HomeContentContainer} />
+                        <Route path="/channel/:serverId" component={ServerContentContainer} />
+                    </Switch>
+                </div>
             </div>
         ) 
 

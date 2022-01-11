@@ -2,17 +2,6 @@ import {connect} from "react-redux"
 import { requestServers, requestServer, createServer, deleteServer, clearServerErrors, clearServersFromState } from "../../actions/server_actions";
 import ServerIndex from "./server_index"
 
-// const getCurrentUserServers = (state) => {
-//     let current_user_id = state.session.currentUserId;
-//     let allServers = Object.values(state.entities.servers);
-//     let currentUserServers = [];
-//     allServers.forEach( server => {
-//         if (server.owner_id === current_user_id){
-//             currentUserServers.push(server);
-//         }
-//     })
-//     return currentUserServers;
-// }
 
 const mapStateToProps = (state)=> {
     return {

@@ -55,9 +55,10 @@ export const requestServers = () => dispatch => (
 export const requestServer = (serverId) => dispatch => (
     ServerApiUtil.requestServer(serverId).then(server => {
         // debugger
-        dispatch(receiveServer(server))
         dispatch(receiveChannels(server.channels))
         dispatch(receiveServerMembers(server.members))
+        return dispatch(receiveServer(server))
+        // return server;
     })
 );
 

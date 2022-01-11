@@ -1,0 +1,42 @@
+
+.member-container{
+    width: 240px;
+    // border: 2px solid orange;
+    background-color: #2E3136;
+}
+
+.member-list-container{
+    // border: 2px solid green;
+    display: flex;
+    flex-direction: column;
+    padding-left: 15px;
+    padding-top: 10px;
+}
+
+.member-title{
+    // border: 2px solid red;
+    margin-top: 20px;
+    font-size: 14px;
+    font-family: 'Mukta', sans-serif;
+    font-weight: 600;
+    color: #6D7175;
+    // margin-bottom: 5px;
+}
+
+.member-list{
+    // border: 2px solid blue;
+    font-family: 'Whitney Book', sans-serif;
+    font-size: 16px;
+    color: #8E9296;
+    ul{
+        li{
+            display: flex;
+            // border: 2px solid cyan;
+            align-items: center;
+            padding: 2px;
+            gap: 5px;
+            margin-top: 7px;
+            margin-bottom: 7px;
+        }
+    }
+}

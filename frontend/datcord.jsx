@@ -4,6 +4,7 @@ import {login, logout, signup} from "./actions/session_actions";
 import {requestServer, requestServers, createServer, deleteServer} from "./actions/server_actions"
 import { requestChannel, requestChannels, createChannel, deleteChannel } from "./actions/channel_actions"
 import { createMembership, deleteMembership } from "./actions/membership_actions";
+import { createFriendship, deleteFriendship } from "./actions/friendship_actions";
 import configureStore from "./store/store"
 import Root from "./components/root";
 
@@ -40,5 +41,8 @@ document.addEventListener("DOMContentLoaded", () => {
     //
     window.createMembership = createMembership;
     window.deleteMembership = deleteMembership;
+    //
+    window.createFriendship = createFriendship;
+    window.deleteFriendship = deleteFriendship;
     ReactDOM.render(<Root store={store} />, root);
 });

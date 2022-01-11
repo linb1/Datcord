@@ -2,7 +2,7 @@ import React from "react"
 import ChannelFormContainer from "./channel_form_container"
 import ChannelIndexItemContainer from "./channel_index_item_container"
 import {Route} from "react-router-dom"
-import ChannelContent from "./../content/channel_content"
+import CreateChannelButton from "./createChannelButton"
 class ChannelIndex extends React.Component{
 
     componentDidMount(){
@@ -19,14 +19,25 @@ class ChannelIndex extends React.Component{
             return <li key={idx}><ChannelIndexItemContainer channel={channel}/></li>
         })
         return(
-            <div>
-                channel index
-                <ul>
-                    {channels}
-                </ul>
-                <ChannelFormContainer/>
-                <Route path="/channel/:serverId/:channelId" component={ChannelContent} /> 
-                <span>-------------</span>
+            <div className="channel-index">
+                <div className="channel-index-header">
+                    <div className="channel-index-header-content">
+                        <div className="channel-index-header-title">
+                            <img src={window.down_arrow} width="7" height="7" />
+                            <span>TEXT CHANNELS</span>
+                        </div>
+                        <div className="channel-index-header-plus">
+                            {/* <span>+</span> */}
+                            <CreateChannelButton/>
+                        </div>
+                    </div>
+                </div>
+                <div className="channel-list-container">
+                    <ul>
+                        {channels}
+                    </ul>
+                </div>
+                {/* <ChannelFormContainer/> */}
             </div>
         )
     }

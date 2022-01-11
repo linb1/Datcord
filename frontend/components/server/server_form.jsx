@@ -8,6 +8,7 @@ class ServerForm extends React.Component{
             name: ""
         }
         this.handleSubmit = this.handleSubmit.bind(this)
+        this.catchServerError = this.catchServerError.bind(this)
     }
 
     handleChange(field){
@@ -25,23 +26,42 @@ class ServerForm extends React.Component{
         this.props.clearChannelsFromState();
         this.props.createServer(server).then(response => {
             // debugger;
-            this.props.history.push(`/channel/${response.server.id}`)
-            }
+            let channelId = Object.values(response.server.channels)[0].id;
+            this.props.history.push(`/channel/${response.server.id}/${channelId}`)
+        }
         );
+        this.props.setShowModal(prev => !prev) // hide modal when user submit
+    }
+
+    catchServerError(){
+        if((this.state.name.length < 2) || (this.state.name.length > 100)){
+            return "error";
+        } else {
+            return "";
+        }
     }
 
     render(){
         // debugger
+        const error = this.catchServerError()
         return(
-            <div>
-                <form>
-                    <label>Server Name</label>
-                    <input
-                        type="text"
-                        value={this.state.name}
-                        onChange={this.handleChange("name")}
-                    />
-                    <button onClick={this.handleSubmit}>Create Server</button>
+            <div className="create-server-form-container">
+                <form className="create-server-form">
+                    <div className="create-server-form-input">
+                        <label>SERVER NAME</label>
+                        <input
+                            type="text"
+                            value={this.state.name}
+                            onChange={this.handleChange("name")}
+                        />
+                    </div>
+                    <div className="create-server-form-button-container">
+                        <div className="create-server-form-button">
+                            <div className={`create-server-form-button-wrapper ${error}`}>
+                                <button className={error} onClick={this.handleSubmit}>Create</button>
+                            </div>
+                        </div>
+                    </div>
                 </form>
             </div>
         )

@@ -11,6 +11,7 @@ import { withRouter } from 'react-router-dom';
 const mapStateToProps = (state) => {
     return {
         current_user_id: state.session.currentUserId,
+        errors: state.errors.server,
     }
 }
 const mapDispatchToProps = (dispatch) => {

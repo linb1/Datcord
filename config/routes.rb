@@ -7,7 +7,9 @@ Rails.application.routes.draw do
     resources :servers, only: [:create, :show, :index, :destroy]
     resources :channels, only: [:create, :show, :index, :destroy]
     resources :memberships, only: [:create]
+    resources :friendships, only: [:create, :index]
 
     delete '/memberships', to: 'memberships#destroy'
+    delete '/friendships', to: 'friendships#destroy'
   end
 end
