@@ -1,5 +1,5 @@
 import React from "react";
-import MessageIndex from "../messages/message_index";
+import Chat from "../messages/chat";
 import MemberIndexContainer from "../members/member_index_container";
 import { render } from "react-dom";
 
@@ -9,6 +9,11 @@ class ChannelContent extends React.Component{
         super(props);
         this.renderHeader = this.renderHeader.bind(this)
     }
+
+    componentDidMount(){
+        this.props.requestChannel(this.props.match.params.channelId)
+    }
+
 
     renderHeader(){
         const channels = this.props.channels
@@ -33,7 +38,7 @@ class ChannelContent extends React.Component{
                     </div>
                     <div className="channel-content">
                         <div className="message-container">
-                            <MessageIndex/> 
+                        <Chat channel_id={this.props.match.params.channelId}/> 
                         </div>
                         <div className="member-container">
                             <MemberIndexContainer />

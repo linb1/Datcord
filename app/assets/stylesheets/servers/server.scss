@@ -12,11 +12,12 @@
     position: relative;
     display: flex;
     flex-direction: column;
+    height: 100vh;
 }
 //channel header - server name
 .server-header{
     // border: 2px solid red;
-    height: 52px;
+    min-height: 48px;
     display: flex;
     align-items: center;
     justify-content: space-between;

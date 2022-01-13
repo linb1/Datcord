@@ -1,5 +1,122 @@
 .message-container{
     // border: 2px solid brown;
+    height: calc(100vh - 48px);
     width: 100%;
     background-color: #36393E;
+}
+
+.chat-container{
+    // border: 2px solid yellow;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.message-list-container{
+    // border: 2px solid cyan;
+    // height: calc(100% - 70px);
+    height: 100%;
+    overflow-y: scroll;
+}
+
+.message-list{
+    // border: 2px solid orange;
+    // max-height: calc(100% - 70px);
+    // overflow-y: scroll;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.message-form-container{
+    height: 70px;
+    // border: 2px solid red;
+}
+
+.message-form-input-container{
+    // border: 2px solid blue;
+}
+
+.message-form{
+    display: flex;
+    justify-content: center;
+    // border: 2px solid pink;
+    input{
+        width: 95%;
+        height: 40px;
+        box-sizing: border-box;
+        padding: 10px;
+        font-size: 16px;
+        font-family: 'Whitney Book', sans-serif;
+        color: white;
+        background-color: #40444A;
+        border: none;
+        border-radius: 3px;
+        transition-duration: 0.4s;
+    }
+
+    input:focus{
+        outline: none;
+        border: none;
+    }
+}
+
+.message-item-container{
+    width: 100%;
+    // border: 2px solid white;
+    padding-top: 3px;
+    margin: 8px 0 8px 0;
+    min-height: 48px;
+    display: flex;
+}
+
+.message-item-container:hover{
+    background-color: #2f3135;
+}
+
+.message-item-user-icon{
+    // border: 2px solid red;
+    padding: 0 7px 0 7px;
+    width: 48px;
+    display: flex;
+    justify-content: center;
+    // align-items: center;
+    img{
+        // padding-top: 2px;
+        // border: 2px solid brown;
+    }
+}
+
+.message-item-content-container{
+    // border: 2px solid blue;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    width: 100%;
+}
+
+.message-item-content-header{
+    display: flex;
+    // border: 2px solid orange;
+    gap: 7px;
+    align-items: baseline;
+    h3{
+        font-family: "Whitney Book", sans-serif;
+        font-size: 16px;
+        color: #3498DB;
+    }
+    span{
+        font-family: "Mukta", sans-serif;
+        font-size: 12px;
+        color: #72767C;
+    }
+}
+.message-item-content-body{
+    // border: 2px solid green;
+    p{
+        font-family: "Whitney Book", sans-serif;
+        font-size: 16px;
+        color: #DCDDDE;
+        line-height: 1.3;
+    }
 }
