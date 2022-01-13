@@ -7,7 +7,7 @@ const Chat = (props) => {
     const [chat, setChat] = useState(null)
 
     useEffect(() => {
-        console.log("hitting subscription")
+        // console.log("hitting subscription")
         props.requestChannel(props.channel_id)
         const chat = App.cable.subscriptions.create(
             { channel: "MessagesChannel", id: props.channel_id},
@@ -21,7 +21,7 @@ const Chat = (props) => {
             )
         setChat(chat);
         return () => {
-            console.log("hitting unsubscribed")
+            // console.log("hitting unsubscribed")
             chat.unsubscribe()
         }
     }, [props.channel_id])
@@ -29,10 +29,10 @@ const Chat = (props) => {
     const messages = props.channelMessages.map((message, idx) => {
         let member = props.members[message.sender_id]
         if (!member) {
-            return <></>
+            return <span key={`loading-${idx}`}></span>
         } else {
             return (
-                <MessageItem message={message} member={member}/>
+                <MessageItem key={message.id} message={message} member={member}/>
             );
         }
     })
@@ -40,7 +40,7 @@ const Chat = (props) => {
     const StartAtBottom = () => {
         const lastMessage = useRef();
         useEffect(() => lastMessage.current.scrollIntoView());
-        return <div ref={lastMessage} />;
+        return <div ref={lastMessage} key={`bottom`}/>;
     };
 
     return(

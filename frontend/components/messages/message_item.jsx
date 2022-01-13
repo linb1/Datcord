@@ -15,16 +15,7 @@ const MessageItem = (props) => {
                 </div>
                 <div className="message-item-content-body">
                     <p>{props.message.body}
-                    {/* asfdgashsdgdawdhzsdhdSGDSgd
-                        asfdgashsdgdawdhzsdhdSGDSgd
-                        asfdgashsdgdawdhzsdhdSGDSgd
-                        asfdgashsdgdawdhzsdhdSGDSgd
-                        asfdgashsdgdawdhzsdhdSGDSgd
-                        asfdgashsdgdawdhzsdhdSGDSgd
-                        asfdgashsdgdawdhzsdhdSGDSgd
-                        asfdgashsdgdawdhzsdhdSGDSgd */}
                     </p>
-                    
                 </div>
             </div>
         </div>

@@ -5,10 +5,13 @@ const MessageForm = (props) => {
     // debugger
     const [body, setBody] = useState("")
 
-    const handleUpdate = (e) => setBody(e.currentTarget.value);
+    const handleUpdate = (e) => {
+        e.preventDefault;
+        setBody(e.currentTarget.value)
+    };
 
     const handleSubmit = (e) => {
-        e.preventDefault;
+        e.preventDefault();
         if (body){
             const message = {
                 sender_id: props.current_user_id,
