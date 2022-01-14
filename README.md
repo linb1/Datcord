@@ -1,24 +1,97 @@
-# README
+# Datcord
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+[Datcord](https://datcord-bl.herokuapp.com/#/) is a Discord clone where users can create an account and have instant live messaging on different servers and channels. This application uses Ruby on Rails for the backend and React for the front end
 
-Things you may want to cover:
+## Technologies
+ - Frontend: React, Redux, SCSS
+ - Backend: Ruby on Rails, Postgresql
+ - Live messaging: ActionCable, Redis, websockets
 
-* Ruby version
+Datcord uses Postgresql to store information and Ruby on Rails to retrieve data from the database as a JSON object. On the frontend, AJAX request are made to the backend and data is processed to create states for the application, which is utilized throughout the app. Using React, data is then visualized and styled onto the inferface to be displayed. ActionCable subscribes the user to certain channel so that when a user creates a new message, that message is broadcasted to all users connected to the same channel.
 
-* System dependencies
+## Versions
+ - Rails 6.1.4.4
+ - ruby 2.7.3
+ - Node v10.13.0
+ - npm 6.4.1
 
-* Configuration
+# Features
 
-* Database creation
+### Live Messaging
+ - This features uses ActionCable to allow users to broadcast their messages to other users in real time.
+     - In order to subscribed the user to the right channel, the channelId had to be passed in from the frontend in order to establish the correct stream.
+     - Instead of creating a new message via a controller, a new message is created directly in the channel when it receives a user's message.
+     - In order to send the message back to the front end, the message is then converted into JSON and broadcasted to all subscribers of the channel.
+     - The frontend received this message object, and adds it to the redux state.
+     - Redux state is then used to render the message on the chat.
+```ruby
+def subscribed
+    stop_all_streams
+    @channel = Channel.find_by(id: params[:id])
+    stream_for @channel
+  end
 
-* Database initialization
+  def receive(data)
+    @message = Message.new(data)
+    if @message.save
+      message = {
+        message: message_json
+      }
+      MessagesChannel.broadcast_to(@channel, message)
+    end
+  end
 
-* How to run the test suite
+  def unsubscribed
+    stop_all_streams
+  end
 
-* Services (job queues, cache servers, search engines, etc.)
+  private
+  def message_json 
+    JSON.parse(ApplicationController.render(
+        partial: 'api/messages/message',
+        locals: { message: @message })
+    )
+  end
+```
+When a user sends a message, a new message is created and added to the database. Then, that message is converted into JSON and broadcasted to the channel the user is currently subscribed to.
 
-* Deployment instructions
+```javascript
+useEffect(() => {
+        props.requestChannel(props.channelId)
+        const chat = App.cable.subscriptions.create(
+            { channel: "MessagesChannel", id: props.channelId},
+            {
+                received: (response) =>{
+                    const { message } = response
+                    props.receiveMessage(message)
+                }
+            }
+            )
+        setChat(chat);
+        return () => {
+            chat.unsubscribe()
+        }
+    }, [props.channelId])
+```
+When a message is broadcasted, it is received on the frontend and added to the redux state. It is then rendered onto the page.
 
-* ...
+### Servers and Channels
+ - Users can create their own servers or channels, and have the option to leave/delete servers.
+     - By creating associations, a hierarchy is created where users have multiple servers, and servers have multiple channels.
+     - Only servers that users are members of are displayed for the user to access.
+         - Achieved by creating Memberships table to create memberships between users and server. 
+         - This membership is also created when a user creates a new server.
+     - Servers display all channels that they owns, as well as all users that are members of the server.
+     - Channels each have their own live chat.
+
+# Future implementations for Datcord
+ - Delete/edit channel modal
+ - Delete/edit server dropdown
+ - Real time updates for when new users joins/create channels
+ - Profile modal - show/edit user information and logout option
+ - Adding friends
+ - Direct Messages
+ - Uploading custom images
+ - Search functionality - for friends and messages
+ - Reactions
+ - Explore page
