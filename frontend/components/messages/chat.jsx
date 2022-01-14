@@ -8,9 +8,9 @@ const Chat = (props) => {
 
     useEffect(() => {
         // console.log("hitting subscription")
-        props.requestChannel(props.channel_id)
+        props.requestChannel(props.channelId)
         const chat = App.cable.subscriptions.create(
-            { channel: "MessagesChannel", id: props.channel_id},
+            { channel: "MessagesChannel", id: props.channelId},
             {
                 received: (response) =>{
                     const { message } = response
@@ -24,7 +24,7 @@ const Chat = (props) => {
             // console.log("hitting unsubscribed")
             chat.unsubscribe()
         }
-    }, [props.channel_id])
+    }, [props.channelId])
 
     const messages = props.channelMessages.map((message, idx) => {
         let member = props.members[message.sender_id]
@@ -52,7 +52,7 @@ const Chat = (props) => {
                 </div>
             </div>
             <div className="message-form-container">
-                <MessageForm chat={chat} current_user_id={props.current_user_id} channel_id={props.channel_id}/>
+                <MessageForm chat={chat} currentUserId={props.currentUserId} channelId={props.channelId}/>
             </div>
         </div>
     )
@@ -65,8 +65,8 @@ import { requestChannel } from "../../actions/channel_actions";
 
 const mapStateToProps = (state, ownProps) => {
     return {
-        current_user_id: state.session.currentUserId,
-        channel_id: parseInt(ownProps.match.params.channelId),
+        currentUserId: state.session.currentUserId,
+        channelId: parseInt(ownProps.match.params.channelId),
         channelMessages: Object.values(state.entities.messages),
         members: state.entities.users,
     };

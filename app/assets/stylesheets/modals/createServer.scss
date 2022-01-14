@@ -14,7 +14,20 @@
     align-items: center;
 }
 
+@keyframes render-modal{
+    0%{
+        opacity: 0%;
+        transform: scale(0.5)
+    }
+
+    100%{
+        opacity: 100%;
+        transform: scale(1)
+    }
+}
+
 .create-server-modal-container{
+    animation: render-modal 0.3s;
     width: 440px;
     height: 400px;
     // border: 2px solid red;

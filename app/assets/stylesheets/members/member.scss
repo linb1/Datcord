@@ -1,8 +1,10 @@
 
 .member-container{
     width: 240px;
+    height: calc(100vh - 48px);
     // border: 2px solid orange;
     background-color: #2E3136;
+    overflow-y: scroll;
 }
 
 .member-list-container{

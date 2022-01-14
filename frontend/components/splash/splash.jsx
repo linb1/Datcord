@@ -23,8 +23,8 @@ class Splash extends React.Component{
                         </div>
                         <nav className='navbar'>
                             <ul>
-                                <li>Github</li>
-                                <li>LinkedIn</li>
+                                <li><a href="https://github.com/linb1/Datcord" target="_blank">Github</a></li>
+                                <li><a href="https://www.linkedin.com/in/brian-lin-1590/" target="_blank">LinkedIn</a></li>
                             </ul>
                         </nav>
                         <div className='splash-button-container'>
@@ -51,10 +51,9 @@ class Splash extends React.Component{
                                 <img className="splash-section-1-img" src={window.splash_section_1} />
                             </div>
                             <div className="splash-section-content">
-                                <h2>Create an invite-only place where you belong</h2>
-                                <p>Discord servers are organized into topic-based 
-                                    channels where you can collaborate, share, and 
-                                    just talk about your day without clogging up a group chat.</p>
+                                <h2>Join the Datcord community where you belong</h2>
+                                <p>Datcord is a Discord clone with user authentication,
+                                    servers, channels, and instant messaging.</p>
                             </div>
                         </div>
                     </div>
@@ -62,9 +61,10 @@ class Splash extends React.Component{
                         <div className='splash-section-container'>
                             <div className="splash-section-content">
                                 <h2>Where hanging out is easy</h2>
-                                <p>Grab a seat in a voice channel when you're free. 
-                                    Friends in your server can see you're around and 
-                                    instantly pop in to talk without having to call.</p>
+                                <p>Join the public server or create your own
+                                    server and channels! Chat with other members
+                                    in real time!
+                                </p>
                             </div>
                             <div className='splash-section-img-container'>
                                 <img className="splash-section-2-img" src={window.splash_section_2} />
@@ -78,15 +78,13 @@ class Splash extends React.Component{
                             </div>
                             <div className="splash-section-content">
                                 <h2>From few to a fandom</h2>
-                                <p>Get any community running with moderation tools 
-                                    and custom member access. Give members special powers, 
-                                    set up private channels, and more.</p>
+                                <p>Expect more features and updates to be implemented soon!</p>
                             </div>
                         </div>
                     </div>
-                    <div className='splash-section-4'>
+                    {/* <div className='splash-section-4'>
                         
-                    </div>
+                    </div> */}
                     <footer className='footer'>
                         <div className='footer-container'>
                             <div className='footer-info-container'>
@@ -100,21 +98,18 @@ class Splash extends React.Component{
                                     </p>
                                 </div>
                                 <div className='info-list'>
-                                    <h4>Placeholder</h4>
+                                    <h4>About me</h4>
                                     <ul>
-                                        <li>placeholder</li>
-                                        <li>placeholder</li>
-                                        <li>placeholder</li>
+                                        <li>From Queens, NY</li>
+                                        <li>Aspiring Software Engineer</li>
+                                        <li>I know how to play one song on the piano</li>
                                     </ul>
                                 </div>
                                 <div className='info-list'>
-                                    <h4>Placeholder</h4>
+                                    <h4>Links</h4>
                                     <ul>
-                                        <li>placeholder</li>
-                                        <li>placeholder</li>
-                                        <li>placeholder</li>
-                                        <li>placeholder</li>
-                                        <li>placeholder</li>
+                                        <li><a href="https://github.com/linb1/Datcord" target="_blank">Github</a></li>
+                                        <li><a href="https://www.linkedin.com/in/brian-lin-1590/" target="_blank">LinkedIn</a></li>
                                     </ul>
                                 </div>
                             </div>

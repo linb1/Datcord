@@ -14,16 +14,22 @@ const MessageForm = (props) => {
         e.preventDefault();
         if (body){
             const message = {
-                sender_id: props.current_user_id,
+                sender_id: props.currentUserId,
                 body: body,
                 messageable_type: "Channel",
-                messageable_id: props.channel_id
+                messageable_id: props.channelId
             }
             props.chat.send(message)
-
-            // props.receiveMessage(message);
         }
         setBody("");
+    }
+
+    const channelName = () => {
+        if(!props.channel){
+            return "";
+        } else {
+            return props.channel.name;
+        }
     }
 
     return(
@@ -33,6 +39,7 @@ const MessageForm = (props) => {
                 type="text"
                 value={body}
                 onChange={handleUpdate}
+                placeholder={`Message #${channelName()}`}
                 />
             </form>
         </div>
@@ -45,7 +52,7 @@ import { receiveMessage } from "../../actions/message_actions";
 const mapStateToProps = (state, ownProps) => {
     return {
         // current_user_id: state.session.currentUserId,
-        // channel_id: parseInt(ownProps.match.params.channelId),
+        channel: state.entities.channels[ownProps.match.params.channelId]
     };
 };
 

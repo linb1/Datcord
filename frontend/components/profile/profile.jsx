@@ -20,7 +20,7 @@ class Profile extends React.Component {
                     <img src={window.default_user_icon} width="32" height="32" />
                     <div className='profile-user'>
                         <span>{currentUser.username}</span>
-                        <p>#tag</p>
+                        <p>{currentUser.tag}</p>
                     </div>
                 </div>
                 <button onClick={logout}>Log Out</button>

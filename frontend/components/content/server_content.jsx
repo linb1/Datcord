@@ -56,7 +56,9 @@ class ServerContent extends React.Component{
             <div className="server-container">
                 <div className="channel-section-container">
                     <div className="server-header">
-                        <span>{serverName}</span>
+                        <div className="server-header-title">
+                            <span>{serverName}</span>
+                        </div>
                         <img src={window.down_arrow} width="10" height="10" />
                     </div>
                     <div className="channel-index-container">

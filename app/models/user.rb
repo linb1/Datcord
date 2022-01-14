@@ -29,7 +29,7 @@ class User < ApplicationRecord
         through: :friendships,
         source: :friend
 
-    after_initialize :ensure_session_token
+    after_initialize :ensure_session_token, :ensure_user_tag
 
     def self.find_by_credentials(email, password)
         user = User.find_by(email: email)
@@ -53,6 +53,22 @@ class User < ApplicationRecord
     end
 
     private
+
+    def new_user_tag
+        tag = "#" + rand(1000..9999).to_s
+    end
+
+    def generate_user_tag
+        self.tag = new_user_tag
+        while User.find_by(tag: self.tag)
+        self.tag = new_user_tag
+        end
+        self.tag
+    end
+
+    def ensure_user_tag
+        generate_user_tag unless self.tag
+    end
 
     def ensure_session_token
         generate_unique_session_token unless self.session_token

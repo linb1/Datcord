@@ -19,7 +19,7 @@ class ChannelIndexItem extends React.Component {
                 <Link to={`/channel/${this.props.current_server_id}/${this.props.channel.id}`}>
                     <div id="channel-index-item-content">
                         <img src={window.hashtag} width="15" height="15" />
-                        {this.props.channel.name}
+                        <span>{this.props.channel.name}</span>
                     </div>
                 </Link>
             </div>

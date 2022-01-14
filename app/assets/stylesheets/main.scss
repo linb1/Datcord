@@ -6,11 +6,18 @@
 }
 
 .server-index-container{
-    // height: 100%;
+    height: 100vh;
     width: 72px;
     // border: 2px solid green;
     background-color: #202225;
     color: white;
+    overflow-y: scroll;
+    -ms-overflow-style: none;  /* Internet Explorer 10+ */
+    scrollbar-width: none;  /* Firefox */
+}
+
+.server-index-container::-webkit-scrollbar { 
+    display: none;  /* Safari and Chrome */
 }
 
 .server-index-content{
@@ -108,6 +115,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-bottom: 50px;
 }
 
 .create-server-button{

@@ -22,21 +22,23 @@ const MessageItem = (props) => {
     )
 }
 
+export default MessageItem
 
-import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
 
-const mapStateToProps = (state, ownProps) => {
-    return {
-        // senders: state.session.users
-    };
-};
+// import { connect } from 'react-redux';
+// import { withRouter } from 'react-router-dom';
 
-// const mapDispatchToProps = dispatch => {
+// const mapStateToProps = (state, ownProps) => {
 //     return {
-//         receiveMessage: (message) => dispatch(receiveMessage(message)),
-//         requestChannel: (channelId) => dispatch(requestChannel(channelId)),
+//         // senders: state.session.users
 //     };
-// }
+// };
 
-export default withRouter(connect(mapStateToProps, null)(MessageItem));
+// // const mapDispatchToProps = dispatch => {
+// //     return {
+// //         receiveMessage: (message) => dispatch(receiveMessage(message)),
+// //         requestChannel: (channelId) => dispatch(requestChannel(channelId)),
+// //     };
+// // }
+
+// export default withRouter(connect(mapStateToProps, null)(MessageItem));
