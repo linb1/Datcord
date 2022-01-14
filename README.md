@@ -2,6 +2,8 @@
 
 [Datcord](https://datcord-bl.herokuapp.com/#/) is a Discord clone where users can create an account and have instant live messaging on different servers and channels. This application uses Ruby on Rails for the backend and React for the front end
 
+<img width="1440" alt="Screen Shot 2022-01-14 at 10 45 45 AM" src="https://user-images.githubusercontent.com/68402088/149543815-767157a7-2bce-4eaa-96a4-a541621731cb.png">
+
 ## Technologies
  - Frontend: React, Redux, SCSS
  - Backend: Ruby on Rails, Postgresql
@@ -18,7 +20,11 @@ Datcord uses Postgresql to store information and Ruby on Rails to retrieve data 
 # Features
 
 ### Live Messaging
+
  - This features uses ActionCable to allow users to broadcast their messages to other users in real time.
+
+ ![final](https://user-images.githubusercontent.com/68402088/149546830-d3fb86a6-10cf-463c-9106-2a234e9143b7.gif)
+
      - In order to subscribed the user to the right channel, the channelId had to be passed in from the frontend in order to establish the correct stream.
      - Instead of creating a new message via a controller, a new message is created directly in the channel when it receives a user's message.
      - In order to send the message back to the front end, the message is then converted into JSON and broadcasted to all subscribers of the channel.
