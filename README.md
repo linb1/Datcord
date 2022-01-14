@@ -25,11 +25,12 @@ Datcord uses Postgresql to store information and Ruby on Rails to retrieve data 
 
  ![final](https://user-images.githubusercontent.com/68402088/149546830-d3fb86a6-10cf-463c-9106-2a234e9143b7.gif)
 
-     - In order to subscribed the user to the right channel, the channelId had to be passed in from the frontend in order to establish the correct stream.
-     - Instead of creating a new message via a controller, a new message is created directly in the channel when it receives a user's message.
-     - In order to send the message back to the front end, the message is then converted into JSON and broadcasted to all subscribers of the channel.
-     - The frontend received this message object, and adds it to the redux state.
-     - Redux state is then used to render the message on the chat.
+ - In order to subscribed the user to the right channel, the channelId had to be passed in from the frontend in order to establish the correct stream.
+ - Instead of creating a new message via a controller, a new message is created directly in the channel when it receives a user's message.
+ - In order to send the message back to the front end, the message is then converted into JSON and broadcasted to all subscribers of the channel.
+ - The frontend received this message object, and adds it to the redux state.
+ - Redux state is then used to render the message on the chat.
+     
 ```ruby
 def subscribed
     stop_all_streams
