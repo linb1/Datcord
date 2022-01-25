@@ -6,25 +6,22 @@ const Chat = (props) => {
     // debugger
     const [chat, setChat] = useState(null)
 
-    useEffect(() => {
-        // console.log("hitting subscription")
-        props.requestChannel(props.channelId)
-        const chat = App.cable.subscriptions.create(
-            { channel: "MessagesChannel", id: props.channelId},
-            {
-                received: (response) =>{
-                    const { message } = response
-                    // debugger
-                    props.receiveMessage(message)
+        useEffect(() => {
+            props.requestChannel(props.channelId)
+            const chat = App.cable.subscriptions.create(
+                { channel: "MessagesChannel", id: props.channelId},
+                {
+                    received: (response) =>{
+                        const { message } = response
+                        props.receiveMessage(message)
+                    }
                 }
+                )
+            setChat(chat);
+            return () => {
+                chat.unsubscribe()
             }
-            )
-        setChat(chat);
-        return () => {
-            // console.log("hitting unsubscribed")
-            chat.unsubscribe()
-        }
-    }, [props.channelId])
+        }, [props.channelId])
 
     const messages = props.channelMessages.map((message, idx) => {
         let member = props.members[message.sender_id]
