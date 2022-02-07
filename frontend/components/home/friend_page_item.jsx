@@ -10,9 +10,15 @@ const FriendPageItem = ({friend}) => {
     return(
         <div className="friend">
             <Link to={`/channel/@me/${friend.id}`}>
-                <div className="friend-name">
-                    <span>{friend.username} </span>
-                    <span>{friend.tag} </span>
+                <div className="friend-info-container">
+                    <img src={window.default_user_icon} width="32" height="32" />
+                    <div className="friend-info">
+                        <div className="friend-name">
+                            <span>{friend.username}</span>
+                            <span>{friend.tag}</span>
+                        </div>
+                        <span>Friend</span>
+                    </div>
                 </div>
                 <div className="friend-options">
                     <div className="friend-message">

@@ -35,21 +35,58 @@
 }
 
 .friend-page-list-container{
-    // border: 2px solid orange;
+    border: 2px solid orange;
     height: calc(100vh - 52px);
     overflow-y: scroll;
     background-color: #36393E;
     z-index: -1;
+    box-sizing: border-box;
+    padding: 30px;
 }
 
 .friend{
-    width: 90%;
+    width: 95%;
+    height: 70px;
     border: 2px solid red;
     a{
+        height: 100%;
         text-decoration: none;
         color: white;
         display: flex;
         justify-content: space-between;
         align-items: center;
+        border: 2px solid green;
+    }
+}
+
+.friend-info-container{
+    border: 2px solid blue;
+    display: flex;
+    align-items: center;
+
+    img{
+        margin-right: 10px;
+    }
+}
+
+.friend-info{
+    border: 2px solid gold;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    span{
+        font-size: 15px;
+        font-family: 'Mukta', sans-serif;
+        font-weight: 400;
+        color: rgb(207, 206, 206);
+    }
+}
+
+.friend-name{
+    span{
+        font-size: 16px;
+        font-family: 'Mukta', sans-serif;
+        font-weight: 600;
+        color: white;
     }
 }
