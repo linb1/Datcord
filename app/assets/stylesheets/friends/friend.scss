@@ -1,27 +1,52 @@
 .dm-section-container{
-    border: 2px solid cyan;
+    // border: 2px solid cyan;
     width: 100%;
     height: 100%;
 }
 
 .friend-header-container{
-    border: 2px solid green;
+    position: relative;
+    // border: 2px solid green;
     background-color: #36393E;
     width: 100%;
     min-height: 52px;
     display: flex;
-    justify-content: center;
     align-items: center;
+    box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.3);
+    z-index: 2;
 }
 
 .friend-page-header{
-    border: 2px solid pink;
+    // border: 2px solid pink;
+    margin-left: 15px;
 }
 
 .friend-page-title{
-    border: 2px solid purple;
+    // border: 2px solid purple;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    span{
+        font-family: 'Mukta', sans-serif;
+        font-weight: 500;
+        font-size: 19px;
+        color: white;
+    }
+}
+
+.friend-page-list-container{
+    // border: 2px solid orange;
+    height: calc(100vh - 52px);
+    overflow-y: scroll;
+    background-color: #36393E;
+    z-index: -1;
 }
 
 .friend{
+    a{
+        text-decoration: none;
+        color: white;
+    }
+
     border: 2px solid red;
 }

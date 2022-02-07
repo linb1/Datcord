@@ -13,8 +13,8 @@ class FriendPage extends React.Component{
                 <div className="friend-header-container">
                     <div className="friend-page-header">
                         <div className="friend-page-title">
-                            Friends
-
+                            <img src={window.friend} width="20" height="20" />
+                            <span>Friends</span>
                         </div>
                     </div>
                 </div>
