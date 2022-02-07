@@ -3,6 +3,7 @@ import FriendIndexContainer from "./../friends/friend_index_container";
 import ProfileContainer from "../profile/profile_container";
 import { Route, Switch } from 'react-router-dom';
 import FriendPage from "../home/friend_page";
+import FriendPageContainer from "../home/friend_page_container";
 import Dm from "../home/dm";
 class HomeContent extends React.Component{
     constructor(props){
@@ -57,7 +58,7 @@ class HomeContent extends React.Component{
             <div className="home-container">
                 <div className="friend-section-container">
                     <div className="friend-header">
-                        <span>Friends</span>
+                        <div className="friend-search">Find or start a conversation</div>
                     </div>
                     <div className="friend-index-container">
                         <FriendIndexContainer/>
@@ -74,16 +75,10 @@ class HomeContent extends React.Component{
                         {seededServerButton}
                     </div>
                 </div> */}
-                <div className="dm-container">
-                    {/* <div className="dm-header-container">
-                        <span>Friends</span>
-                    </div>
-                    <div className="dm-content">
-
-                    </div> */}
+                <div className="dm-section-container">
                     <Switch>
                         <Route path="/channel/@me/:friendId" component={Dm} />
-                        <Route path="/channel/@me" component={FriendPage} />
+                        <Route path="/channel/@me" component={FriendPageContainer} />
                     </Switch>
                 </div>
             </div>

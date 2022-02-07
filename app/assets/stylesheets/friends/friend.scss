@@ -1,0 +1,27 @@
+.dm-section-container{
+    border: 2px solid cyan;
+    width: 100%;
+    height: 100%;
+}
+
+.friend-header-container{
+    border: 2px solid green;
+    background-color: #36393E;
+    width: 100%;
+    min-height: 52px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.friend-page-header{
+    border: 2px solid pink;
+}
+
+.friend-page-title{
+    border: 2px solid purple;
+}
+
+.friend{
+    border: 2px solid red;
+}
