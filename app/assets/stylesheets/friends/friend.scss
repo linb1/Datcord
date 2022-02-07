@@ -43,10 +43,13 @@
 }
 
 .friend{
+    width: 90%;
+    border: 2px solid red;
     a{
         text-decoration: none;
         color: white;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
     }
-
-    border: 2px solid red;
 }

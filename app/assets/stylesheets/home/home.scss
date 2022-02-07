@@ -46,6 +46,8 @@
 
 .friend-list-container{
     // border: 2px solid cyan;
+    overflow-y: scroll;
+    height: calc(100vh - 114px);
     padding: 5px;
     font-family: 'Whitney Book', sans-serif;
     font-size: 16px;
@@ -57,10 +59,10 @@
                 font-size: 16px;
                 color: #8E9296;
                 text-decoration: none;
-                padding: 5px;
+                padding: 7px;
                 display: flex;
                 align-items: center;
-                gap: 7px;
+                gap: 10px;
             }
         }
     }
