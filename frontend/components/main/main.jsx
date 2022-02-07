@@ -14,7 +14,7 @@ class Main extends React.Component{
                 </div>
                 <div className="content">
                     <Switch>
-                        <Route exact path="/channel/@me" component={HomeContentContainer} />
+                        <Route path="/channel/@me" component={HomeContentContainer} />
                         <Route path="/channel/:serverId" component={ServerContentContainer} />
                     </Switch>
                 </div>

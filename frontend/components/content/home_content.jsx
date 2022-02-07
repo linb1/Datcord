@@ -63,12 +63,20 @@ class HomeContent extends React.Component{
                         <ProfileContainer />
                     </div>
                 </div>
-                <div className="join-seeded-server-container">
+                {/* <div className="join-seeded-server-container">
                     <div className="join-seeded-server-header">
                         <span>Click the button to get started!</span>
                     </div>
                     <div className="join-seeded-server-button">
                         {seededServerButton}
+                    </div>
+                </div> */}
+                <div className="dm-container">
+                    <div className="dm-header-container">
+                        <span>Friends</span>
+                    </div>
+                    <div className="dm-content">
+
                     </div>
                 </div>
             </div>
