@@ -1,6 +1,9 @@
 import React from "react";
 import FriendIndexContainer from "./../friends/friend_index_container";
 import ProfileContainer from "../profile/profile_container";
+import { Route, Switch } from 'react-router-dom';
+import FriendPage from "../home/friend_page";
+import Dm from "../home/dm";
 class HomeContent extends React.Component{
     constructor(props){
         super(props);
@@ -72,12 +75,16 @@ class HomeContent extends React.Component{
                     </div>
                 </div> */}
                 <div className="dm-container">
-                    <div className="dm-header-container">
+                    {/* <div className="dm-header-container">
                         <span>Friends</span>
                     </div>
                     <div className="dm-content">
 
-                    </div>
+                    </div> */}
+                    <Switch>
+                        <Route path="/channel/@me/:friendId" component={Dm} />
+                        <Route path="/channel/@me" component={FriendPage} />
+                    </Switch>
                 </div>
             </div>
         );
