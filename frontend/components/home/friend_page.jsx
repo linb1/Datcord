@@ -20,6 +20,10 @@ class FriendPage extends React.Component{
                 </div>
                 <div className="friend-page-list-container">
                     <ul>
+                        <div className="friend-page-list-header">
+                            <h3>ALL FRIENDS -&nbsp;</h3>
+                            <span>{this.props.friends.length}</span>
+                        </div>
                         {friends}
                     </ul>
                 </div>

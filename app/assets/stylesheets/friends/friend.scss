@@ -51,6 +51,18 @@
     }
 }
 
+.friend-page-list-header{
+    // border: 2px solid cyan;
+    width: 95%;
+    padding: 0 10px 0 10px;
+    display: flex;
+    font-family: "Mukta", sans-serif;
+    font-weight: 500px;
+    font-size: 14px;
+    color: #B9BBBE;
+    padding-bottom: 10px;
+}
+
 .friend{
     width: 95%;
     height: 65px;
@@ -153,6 +165,13 @@
     align-items: center;
     justify-content: center;
     background-color: #2f3136;
+
+    a{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
     img{
         width: 16px;
         height: 16px;
