@@ -9,7 +9,7 @@ class FriendPage extends React.Component{
             </li>
         })
         return(
-            <div>
+            <div className="friend-page-container">
                 <div className="friend-header-container">
                     <div className="friend-page-header">
                         <div className="friend-page-title">

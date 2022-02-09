@@ -65,18 +65,47 @@
                 color: #8E9296;
                 text-decoration: none;
                 padding: 7px;
+                margin: 0 5px;
                 display: flex;
                 align-items: center;
                 gap: 10px;
             }
 
             a:hover{
-                color: #b1b6bb;
+                color: #e0e7ee;
                 background-color: #3d4249;
                 border-radius: 4px;
             }
         }
     }
+}
+
+.see-friend{
+    margin: 5px 0;
+    a{
+        height: 30px;
+        img{
+            padding: 0px 3px;
+        }
+    }
+}
+
+.friend-list-dm-header{
+    // border: 2px solid red;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10px;
+    font-size: 14px;
+    font-family: 'Mukta', sans-serif;
+    font-weight: 400;
+    margin-top: 15px;
+}
+
+.dm-plus{
+    font-size: 24px;
+    font-family: 'Whitney Book', sans-serif;
+    font-weight: 400;
 }
 
 .join-seeded-server-container{

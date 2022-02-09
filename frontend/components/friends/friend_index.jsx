@@ -19,9 +19,30 @@ class FriendIndex extends React.Component{
                     </Link>
                 </li>
         })
+
+        const seeFriends = (
+            <li className="see-friend">
+                <Link to={`/channel/@me/`}>
+                    <img src={window.friend} width="20" height="20" />
+                    <span>
+                        Friends
+                    </span>
+                </Link>
+            </li>
+        )
+
+        const directMessage = (
+            <div className="friend-list-dm-header">
+                <span>DIRECT MESSAGES</span>
+                <span className="dm-plus">+</span>
+            </div>
+        )
+
         return (
             <div className="friend-list-container">
                 <ul>
+                    {seeFriends}
+                    {directMessage}
                     {friends}
                 </ul>
             </div>

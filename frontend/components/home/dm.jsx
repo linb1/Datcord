@@ -4,8 +4,15 @@ class Dm extends React.Component {
 
     render() {
         return (
-            <div>
-                dm
+            <div className="dm-container">
+                <div className="dm-header-container">
+                    person dm
+                </div>
+                <div className="dm-content">
+                    <div className="dm-message-container">
+
+                    </div>
+                </div>
             </div>
         )
     }
