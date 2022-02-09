@@ -35,32 +35,73 @@
 }
 
 .friend-page-list-container{
-    border: 2px solid orange;
+    // border: 2px solid orange;
     height: calc(100vh - 52px);
     overflow-y: scroll;
     background-color: #36393E;
     z-index: -1;
     box-sizing: border-box;
     padding: 30px;
+    ul{
+        li:hover + li{
+            .friend-link{
+                border-color: transparent;
+            }
+        }
+    }
 }
 
 .friend{
     width: 95%;
     height: 65px;
-    border: 2px solid red;
-    a{
-        height: 100%;
-        text-decoration: none;
-        color: white;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        border: 2px solid green;
+    padding: 0 10px 0 10px;
+    // border: 2px solid red;
+    // a{
+    //     height: 100%;
+    //     text-decoration: none;
+    //     color: white;
+    //     display: flex;
+    //     justify-content: space-between;
+    //     align-items: center;
+    //     border: 2px solid green;
+    // }
+}
+
+.friend-link {
+    border-top: 1px solid rgba(255,255,255,0.06);
+    height: 100%;
+    text-decoration: none;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    // border: 2px solid green;
+}
+
+.friend:hover{
+    background-color: #414449;
+    border-radius: 8px;
+    .friend-link {
+        border-color: transparent;
+    }
+    .friend-option{
+        background-color: #27292c;
+    }
+
+    .friend-tag{
+        opacity: 100;
+        color: #B9BBBE;
+        font-family: 'Mukta', sans-serif;
+        font-weight: 300;
     }
 }
 
+.friend:hover + .friend { 
+    background-color: yellow;
+}
+
 .friend-info-container{
-    border: 2px solid blue;
+    // border: 2px solid blue;
     display: flex;
     align-items: center;
 
@@ -70,27 +111,63 @@
 }
 
 .friend-info{
-    border: 2px solid gold;
+    // border: 2px solid gold;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     span{
-        font-size: 15px;
+        font-size: 14px;
         font-family: 'Mukta', sans-serif;
         font-weight: 400;
         color: rgb(207, 206, 206);
     }
 }
 
+.friend-tag{
+    opacity: 0;
+}
+
+
 .friend-name{
     span{
-        font-size: 16px;
+        font-size: 15px;
         font-family: 'Mukta', sans-serif;
         font-weight: 600;
         color: white;
     }
 }
 
-.friend-options{
-    border: 2px solid cyan;
+.friend-options-container{
+    // border: 2px solid cyan;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.friend-option{
+    // border: 2px solid red;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #2f3136;
+    img{
+        width: 16px;
+        height: 16px;
+        filter: invert(80%);
+    }
+}
+
+.friend-option.message:hover{
+    img{
+        filter: invert(100%);
+    }
+}
+
+.friend-option.unfriend:hover{
+    img{
+        filter: invert(90%) brightness(60%) sepia(100) saturate(70) hue-rotate(29deg);
+    }
 }
