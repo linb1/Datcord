@@ -33,6 +33,31 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    a{
+        // border: 2px solid white;
+        background-color: #36393F;
+        border-radius: 50%;
+        transition-duration: 0.2s;
+        img{
+            filter: invert(90%);
+        }
+    }
+
+    a:hover{
+        border-radius: 25%;
+        background-color: #5865F2;
+        img{
+            filter: invert(100%);
+        }
+    }
+
+    a:focus{
+        border-radius: 25%;
+        background-color: #5865F2;
+        img{
+            filter: invert(100%);
+        }
+    }
 }
 
 .server-profile-icon{
@@ -42,21 +67,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #36393F;
-    border-radius: 50%;
-    transition-duration: 0.2s;
-    img{
-        filter: invert(90%);
-    }
 }
 
-.server-profile-icon:hover{
-    border-radius: 25%;
-    background-color: #5865F2;
-    img{
-        filter: invert(100%);
-    }
-}
 
 .seperator{
     width: 32px;
@@ -72,42 +84,89 @@
     ul{
         li{
             // border: 2px solid blue;
+            .server-list-item-container{
+                // border: 2px solid cyan;
+                height: 48px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                padding-bottom: 10px;
+                a{ 
+                    // border: 2px solid green;
+                    text-decoration: none;
+                    color: #e8e8e8;
+                    font-family: 'Whitney', sans-serif;
+                    font-size: 18px;
+                    border-radius: 50%;
+                    overflow: hidden;
+                    transition-duration: 0.2s;
+                    background-color: #36393F;
+                }
+
+                a:hover{
+                    border-radius: 25%;
+                    background-color: #5865F2;
+                }
+
+                a:focus{
+                    border-radius: 25%;
+                    background-color: #5865F2;
+                }
+            }
+
+            .server-list-item{
+                width: 48px;
+                height: 48px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .server-list-item:hover{
+                border-radius: 25%;
+                background-color: #5865F2;
+            }
+
+            .server-list-item:focus{
+                border-radius: 25%;
+                background-color: #5865F2;
+            }
         }
     }
 }
 
-.server-list-item-container{
-    // border: 2px solid cyan;
-    height: 48px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding-bottom: 10px;
-    a{
-        text-decoration: none;
-        color: #e8e8e8;
-        font-family: 'Whitney', sans-serif;
-        font-size: 18px;
-    }
-}
+// .server-list-item-container{
+//     border: 2px solid cyan;
+//     height: 48px;
+//     display: flex;
+//     justify-content: center;
+//     align-items: center;
+//     padding-bottom: 10px;
+//     a{
+//         text-decoration: none;
+//         color: #e8e8e8;
+//         font-family: 'Whitney', sans-serif;
+//         font-size: 18px;
+//     }
+// }
 
-.server-list-item{
-    // border: 2px solid red;
-    border-radius: 50%;
-    width: 48px;
-    height: 48px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #36393F;
-    overflow: hidden;
-    transition-duration: 0.2s;
-}
+// .server-list-item{
+//     // border: 2px solid red;
+//     border-radius: 50%;
+//     width: 48px;
+//     height: 48px;
+//     display: flex;
+//     justify-content: center;
+//     align-items: center;
+//     background-color: #36393F;
+//     overflow: hidden;
+//     transition-duration: 0.2s;
+// }
 
-.server-list-item:hover{
-    border-radius: 25%;
-    background-color: #5865F2;
-}
+// .server-list-item:hover{
+//     border-radius: 25%;
+//     background-color: #5865F2;
+// }
 
 .create-server-button-container{
     // border: 2px solid cyan;
