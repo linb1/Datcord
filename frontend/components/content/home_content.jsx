@@ -5,6 +5,7 @@ import { Route, Switch } from 'react-router-dom';
 import FriendPage from "../home/friend_page";
 import FriendPageContainer from "../home/friend_page_container";
 import Dm from "../home/dm";
+import DmContainer from '../home/dm-container';
 class HomeContent extends React.Component{
     constructor(props){
         super(props);
@@ -77,7 +78,7 @@ class HomeContent extends React.Component{
                 </div> */}
                 <div className="dm-section-container">
                     <Switch>
-                        <Route path="/channel/@me/:friendId" component={Dm} />
+                        <Route path="/channel/@me/:friendId" component={DmContainer} />
                         <Route path="/channel/@me" component={FriendPageContainer} />
                     </Switch>
                 </div>
