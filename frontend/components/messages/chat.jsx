@@ -27,11 +27,11 @@ const Chat = (props) => {
         let member = props.members[message.sender_id]
         if (!member) {
             return <span key={`loading-${idx}`}></span>
-        } else {
+        } else { 
             return (
                 <MessageItem key={message.id} message={message} member={member}/>
             );
-        }
+        }   
     })
 
     const StartAtBottom = () => {
