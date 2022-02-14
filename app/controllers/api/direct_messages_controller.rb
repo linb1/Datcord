@@ -21,7 +21,7 @@ class Api::DirectMessagesController < ApplicationController
     end
 
     def destroy
-        @dm = DirectMessage.find_by(id: params[:id])
+        @dm = DirectMessage.find_by(id: params[:id] )
 
         if @dm && @dm.delete
             @dms = DirectMessage.all
@@ -33,6 +33,6 @@ class Api::DirectMessagesController < ApplicationController
 
 
     def dm_params
-        params.require(:direct_message).permit(:user_id, :server_id)
+        params.require(:direct_message).permit(:user_id, :friend_id)
     end
 end
