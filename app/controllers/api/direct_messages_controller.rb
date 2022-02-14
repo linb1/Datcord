@@ -11,12 +11,15 @@ class Api::DirectMessagesController < ApplicationController
     end
 
     def create
+        #check if dm exists
         @dm = DirectMessage.new(dm_params)
+        existingDm = DirectMessage.find_by(user_id: params[:dm][:user_id], friend_id: params[:dm][:friend_id])
         if @dm.save
             render "api/direct_messages/show"
+        elsif existingDm
+            render json: ["Dm already exists"], status: 422
         else
-            errors = @dm.errors.full_messages
-            render json: errors, status: 422
+            render json: @dm.errors.full_messages, status: 422
         end
     end
 
@@ -33,6 +36,6 @@ class Api::DirectMessagesController < ApplicationController
 
 
     def dm_params
-        params.require(:direct_message).permit(:user_id, :friend_id)
+        params.require(:dm).permit(:user_id, :friend_id)
     end
 end

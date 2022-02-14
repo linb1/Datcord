@@ -1,5 +1,5 @@
 import { connect } from "react-redux"
-import { requestServer } from "../../actions/server_actions";
+import { createDm } from "../../actions/dm_actions";
 import FriendPageItem from "./friend_page_item"
 import { withRouter } from 'react-router-dom';
 import { resetUserState, requestFriends } from "../../actions/user_actions";
@@ -18,7 +18,7 @@ const mapStateToProps = (state, ownProps) => {
 }
 const mapDispatchToProps = (dispatch) => {
     return {
-        
+        createDm: (dm) => dispatch(createDm(dm)),
     }
 }
 

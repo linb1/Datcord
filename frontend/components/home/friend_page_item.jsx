@@ -1,10 +1,19 @@
 import React from "react";
 import {Link} from "react-router-dom"
-const FriendPageItem = ({friend}) => {
+const FriendPageItem = ({ friend, current_user_id, createDm}) => {
 
     const unfriendUser = (e) => {
         e.preventDefault();
-        console.log(friend.username)
+        console.log(friend.id)
+        console.log(current_user_id)
+    }
+
+    const createConvo = () => {
+        const dm = {
+            user_id: current_user_id,
+            friend_id: friend.id
+        }
+        createDm(dm)
     }
 
     return(
@@ -21,10 +30,10 @@ const FriendPageItem = ({friend}) => {
                     </div>
                 </div>
                 <div className="friend-options-container">
-                    <div className="friend-option message">
-                        <Link to={`/channel/@me/${friend.id}`}>
+                    <div className="friend-option message" onClick={createConvo}>
+                        {/* <Link to={`/channel/@me/${friend.id}`} onClick={createConvo}> */}
                             <img src={window.message}/>
-                        </Link>
+                        {/* </Link> */}
                     </div>
                     <div className="friend-option unfriend" onClick={unfriendUser}>
                         <img src={window.bin} />
