@@ -1,12 +1,12 @@
 class Api::DirectMessagesController < ApplicationController
 
     def index
-        @dms = DirectMessage.all
+        @dms = DirectMessage.all.where(user_id: current_user.id)
         render "api/direct_messages/index"
     end
 
     def show
-        @dm = DirectMessage.includes(:messages).find_by(id: params[:id])
+        @dm = DirectMessage.includes(:messages, :friend).find_by(id: params[:id])
         render "api/direct_messages/show"
     end
 
@@ -14,23 +14,26 @@ class Api::DirectMessagesController < ApplicationController
         #check if dm exists
         @dm = DirectMessage.new(dm_params)
         existingDm = DirectMessage.find_by(user_id: params[:dm][:user_id], friend_id: params[:dm][:friend_id])
-        if @dm.save
+        if existingDm
+            @dm = existingDm
             render "api/direct_messages/show"
-        elsif existingDm
-            render json: ["Dm already exists"], status: 422
         else
-            render json: @dm.errors.full_messages, status: 422
+            if @dm.save
+                friendDm = DirectMessage.create(user_id: params[:dm][:friend_id], friend_id: params[:dm][:user_id])
+                render "api/direct_messages/show"
+            else
+                render json: @dm.errors.full_messages, status: 422
+            end
         end
     end
 
     def destroy
-        @dm = DirectMessage.find_by(id: params[:id] )
-
-        if @dm && @dm.delete
-            @dms = DirectMessage.all
-            render "api/direct_messages/show"
+        @dm = DirectMessage.find_by(user_id: dm_params[:user_id], friend_id: dm_params[:friend_id])
+        other_dm = DirectMessage.find_by(user_id: dm_params[:friend_id], friend_id: dm_params[:user_id])
+        if @dm.destroy && other_dm.destroy
+            render 'api/direct_messages/show'
         else
-            render json: ["You don't have permission/dm doesn't exist"], status: 422
+            render json: @friendship.errors.full_messages, status: 422
         end
     end
 

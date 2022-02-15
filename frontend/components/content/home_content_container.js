@@ -4,6 +4,7 @@ import { withRouter } from 'react-router-dom';
 import { requestServer } from "../../actions/server_actions";
 import { createMembership } from "../../actions/membership_actions";
 import { resetUserState, requestFriends } from "../../actions/user_actions";
+import { requestDms } from "../../actions/dm_actions";
 const mapStateToProps = (state, ownProps) => {
     return {
         currentUserId: state.session.currentUserId,
@@ -16,6 +17,7 @@ const mapDispatchToProps = (dispatch) => {
         createMembership: (membership) => dispatch(createMembership(membership)),
         resetUserState: (currentUserId) => dispatch(resetUserState(currentUserId)),
         requestFriends: () => dispatch(requestFriends()),
+        requestDms: () => dispatch(requestDms()),
     }
 }
 

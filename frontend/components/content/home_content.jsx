@@ -13,6 +13,10 @@ class HomeContent extends React.Component{
         this.joinedSeededServer = this.joinedSeededServer.bind(this)
     }
 
+    componentDidMount(){
+        this.props.requestDms();
+    }
+
     joinSeededServer(e){
         e.preventDefault;
         const membership = {
