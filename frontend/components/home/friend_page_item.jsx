@@ -1,6 +1,6 @@
 import React from "react";
 import {Link} from "react-router-dom"
-const FriendPageItem = ({ friend, current_user_id, createDm}) => {
+const FriendPageItem = ({ friend, current_user_id, createDm, currentDm, ownProps}) => {
 
     const unfriendUser = (e) => {
         e.preventDefault();
@@ -9,16 +9,16 @@ const FriendPageItem = ({ friend, current_user_id, createDm}) => {
     }
 
     const createConvo = () => {
-        const dm = {
+        const newDm = {
             user_id: current_user_id,
             friend_id: friend.id
         }
-        createDm(dm)
+        createDm(newDm).then(res => ownProps.history.push(`/channel/@me/${res.dm.id}`))
     }
 
     return(
         <div className="friend">
-            <Link to={`/channel/@me/${friend.id}`} className="friend-link">
+            <div className="friend-link" onClick={createConvo}>
                 <div className="friend-info-container">
                     <img src={window.default_user_icon} width="32" height="32" />
                     <div className="friend-info">
@@ -27,7 +27,7 @@ const FriendPageItem = ({ friend, current_user_id, createDm}) => {
                             <span className="friend-tag">{friend.tag}</span>
                         </div>
                         <span>Friend</span>
-                    </div>git
+                    </div>
                 </div>
                 <div className="friend-options-container">
                     <div className="friend-option message" onClick={createConvo}>
@@ -39,7 +39,7 @@ const FriendPageItem = ({ friend, current_user_id, createDm}) => {
                         <img src={window.bin} />
                     </div>
                 </div>
-            </Link>
+            </div>
         </div>
     );
 }

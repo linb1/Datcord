@@ -4,16 +4,19 @@ import FriendPageItem from "./friend_page_item"
 import { withRouter } from 'react-router-dom';
 import { resetUserState, requestFriends } from "../../actions/user_actions";
 
-// const getFriends = (state) => {
-//     let users = Object.values(state.entities.users);
-//     let friends = users.filter(user => user.id !== state.session.currentUserId)
-//     return friends
-// }
+const getDm = (state, ownProps) => {
+    let dms = Object.values(state.entities.dms);
+    let dm = dms.filter(dm => dm.friend_id === ownProps.friend.id)
+    return dm.first
+}
 
 const mapStateToProps = (state, ownProps) => {
     return {
         currentUser: state.entities.users[state.session.currentUserId],
         current_user_id: state.session.currentUserId,
+        currentDm: getDm(state, ownProps),
+        ownProps: ownProps,
+        
     }
 }
 const mapDispatchToProps = (dispatch) => {

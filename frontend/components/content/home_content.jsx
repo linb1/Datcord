@@ -82,7 +82,7 @@ class HomeContent extends React.Component{
                 </div> */}
                 <div className="dm-section-container">
                     <Switch>
-                        <Route path="/channel/@me/:friendId" component={DmContainer} />
+                        <Route path="/channel/@me/:dmId" component={DmContainer} />
                         <Route path="/channel/@me" component={FriendPageContainer} />
                     </Switch>
                 </div>

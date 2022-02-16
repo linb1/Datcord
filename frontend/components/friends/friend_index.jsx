@@ -11,7 +11,7 @@ class FriendIndex extends React.Component{
     render(){
         const friends = this.props.dms.map((dm,idx) => {
             return <li key={idx}>
-                    <Link to={`/channel/@me/${dm.friend.id}`}>
+                    <Link to={`/channel/@me/${dm.id}`}>
                         <img src={window.default_user_icon} width="32" height="32" />
                         <span>
                             {dm.friend.username}

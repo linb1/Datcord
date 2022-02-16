@@ -9,7 +9,7 @@ class Dm extends React.Component {
                     <div className="dm-header">
                         <div className="dm-title">
                             <img src={window.group} width="20" height="20" />
-                            <span>{this.props.friendId}</span>
+                            <span>{this.props.dmId}</span>
                         </div>
                     </div>
                 </div>
