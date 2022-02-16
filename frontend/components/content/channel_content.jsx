@@ -27,7 +27,7 @@ class ChannelContent extends React.Component{
             }
         }
     }
-
+    // channel_id={this.props.match.params.channelId}
     render(){
         const channelName = this.renderHeader();
         return(
@@ -38,7 +38,7 @@ class ChannelContent extends React.Component{
                     </div>
                     <div className="channel-content">
                         <div className="message-container">
-                        <Chat channel_id={this.props.match.params.channelId}/> 
+                        <Chat type="channel"/> 
                         </div>
                         <div className="member-container">
                             <MemberIndexContainer />

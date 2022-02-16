@@ -3,8 +3,13 @@ class MessagesChannel < ApplicationCable::Channel
     # stream_from "some_channel"
     stop_all_streams
     puts ("Connected to channel #{params[:id]}")
-    @channel = Channel.find_by(id: params[:id])
-    stream_for @channel
+    # @channel = Channel.find_by(id: params[:id])
+    if (params[:type] == "channel")
+      @chat = Channel.find_by(id: params[:id])
+    else
+
+    end
+    stream_for @chat
   end
 
   def receive(data)
@@ -13,7 +18,7 @@ class MessagesChannel < ApplicationCable::Channel
       message = {
         message: message_json
       }
-      MessagesChannel.broadcast_to(@channel, message)
+      MessagesChannel.broadcast_to(@chat, message)
     end
   end
 

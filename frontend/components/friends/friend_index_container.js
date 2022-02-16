@@ -3,7 +3,7 @@ import { requestServer } from "../../actions/server_actions";
 import FriendIndex from "./friend_index"
 import { withRouter } from 'react-router-dom';
 import { resetUserState, requestFriends } from "../../actions/user_actions";
-import { requestDms } from "../../actions/dm_actions";
+import { requestDm } from "../../actions/dm_actions";
 
 const getFriends = (state) => {
     let users = Object.values(state.entities.users);
@@ -26,7 +26,7 @@ const mapDispatchToProps = (dispatch) => {
         clearChannelsFromState: () => dispatch(clearChannelsFromState()),
         resetUserState: (currentUserId) => dispatch(resetUserState(currentUserId)),
         requestFriends: () => dispatch(requestFriends()),
-        requestDms: () => dispatch(requestDms()),
+        requestDm: (dmId) => dispatch(requestDm(dmId)),
     }
 }
 

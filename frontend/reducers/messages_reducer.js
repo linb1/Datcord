@@ -1,9 +1,18 @@
 import { RECEIVE_CHANNEL } from "../actions/channel_actions";
+import { RECEIVE_DM } from "../actions/channel_actions";
 import { RECEIVE_MESSAGE, REMOVE_MESSAGE } from "../actions/message_actions";
 
 const getChannelMessages = (state, action) => {
     const nextState = {};
     for (let [id, message] of Object.entries(action.channel.messages)) {
+        nextState[id] = message;
+    }
+    return nextState;
+}
+
+const getDmMessages = (state, action) => {
+    const nextState = {};
+    for (let [id, message] of Object.entries(action.dm.messages)) {
         nextState[id] = message;
     }
     return nextState;
@@ -17,6 +26,9 @@ const messagesReducer = (state = {}, action) => {
         case RECEIVE_CHANNEL:
             if (!action.channel.messages) return {};
             return getChannelMessages(state, action);
+        case RECEIVE_DM:
+            if (!action.dm.messages) return {};
+            return getDmMessages(state, action);
         case RECEIVE_MESSAGE:
             return Object.assign({}, state, { [action.message.id]: action.message });
         case REMOVE_MESSAGE:

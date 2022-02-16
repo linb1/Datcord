@@ -3,14 +3,23 @@ import { Link } from "react-router-dom"
 
 class FriendIndex extends React.Component{
 
+    constructor(props){
+        super(props)
+        this.getDmMessages = this.getDmMessages.bind(this)
+    }
+
     componentDidMount() {
         this.props.resetUserState(this.props.current_user_id)
         this.props.requestFriends()
     }
 
+    getDmMessages(dmId){
+        this.props.requestDm(dmId)
+    }
+
     render(){
         const friends = this.props.dms.map((dm,idx) => {
-            return <li key={idx}>
+            return <li key={idx} onClick={() => this.getDmMessages(dm.id)}>
                     <Link to={`/channel/@me/${dm.id}`}>
                         <img src={window.default_user_icon} width="32" height="32" />
                         <span>
