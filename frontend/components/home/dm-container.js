@@ -5,6 +5,8 @@ import { requestServer } from "../../actions/server_actions";
 import { requestChannel } from "../../actions/channel_actions";
 const mapStateToProps = (state, ownProps) => {
     return {
+        friendId: ownProps.match.params.friendId,
+        currentDm: state.entities.dms
     }
 }
 const mapDispatchToProps = (dispatch) => {

@@ -27,7 +27,7 @@ const FriendPageItem = ({ friend, current_user_id, createDm}) => {
                             <span className="friend-tag">{friend.tag}</span>
                         </div>
                         <span>Friend</span>
-                    </div>
+                    </div>git
                 </div>
                 <div className="friend-options-container">
                     <div className="friend-option message" onClick={createConvo}>
