@@ -1,5 +1,5 @@
 import { RECEIVE_CHANNEL } from "../actions/channel_actions";
-import { RECEIVE_DM } from "../actions/channel_actions";
+import { RECEIVE_DM } from "../actions/dm_actions";
 import { RECEIVE_MESSAGE, REMOVE_MESSAGE } from "../actions/message_actions";
 
 const getChannelMessages = (state, action) => {

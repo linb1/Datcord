@@ -3,6 +3,7 @@ import React from "react";
 class Dm extends React.Component {
 
     componentDidMount(){
+        this.props.resetUserState(this.props.currentUserId)
         this.props.requestDm(this.props.dmId)
     }
 
@@ -13,7 +14,7 @@ class Dm extends React.Component {
             } else {
                 return this.props.currentDm.friend.username
             }
-        }    
+        }
         return (
             <div className="dm-container">
                 <div className="dm-header-container">

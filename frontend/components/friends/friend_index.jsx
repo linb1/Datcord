@@ -9,11 +9,12 @@ class FriendIndex extends React.Component{
     }
 
     componentDidMount() {
-        this.props.resetUserState(this.props.current_user_id)
-        this.props.requestFriends()
+        this.props.resetUserState(this.props.currentUserId)
+        // this.props.requestFriends()
     }
 
     getDmMessages(dmId){
+        this.props.resetUserState(this.props.currentUserId)
         this.props.requestDm(dmId)
     }
 

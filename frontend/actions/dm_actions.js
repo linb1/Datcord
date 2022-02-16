@@ -1,4 +1,5 @@
 import * as DmApiUtil from "../util/dm_api_util";
+import { receiveDmMembers } from "./user_actions";
 
 export const RECEIVE_DMS = 'RECEIVE_DMS';
 export const RECEIVE_DM = 'RECEIVE_DM';
@@ -51,9 +52,10 @@ export const requestDms = () => dispatch => (
 );
 
 export const requestDm = (dmId) => dispatch => (
-    DmApiUtil.requestDm(dmId).then(dm => (
+    DmApiUtil.requestDm(dmId).then(dm => {
         dispatch(receiveDm(dm))
-    ))
+        dispatch(receiveDmMembers(dm.members))
+    })
 );
 
 export const createDm = (dm) => dispatch => (

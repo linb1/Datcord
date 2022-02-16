@@ -2,6 +2,10 @@ import React from "react";
 import FriendPageItemContainer from "./friend_page_item_container";
 class FriendPage extends React.Component{
 
+    componentDidMount(){
+        this.props.requestFriends()
+    }
+
     render(){
         const friends = this.props.friends.map((friend, idx) => {
             return <li key={idx}>

@@ -15,7 +15,7 @@ const mapStateToProps = (state, ownProps) => {
     return {
         friends: getFriends(state),
         currentUser: state.entities.users[state.session.currentUserId],
-        current_user_id: state.session.currentUserId,
+        currentUserId: state.session.currentUserId,
         dms: Object.values(state.entities.dms),
     }
 }

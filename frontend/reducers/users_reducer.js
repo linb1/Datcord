@@ -1,5 +1,5 @@
 import { RECEIVE_CURRENT_USER, LOGOUT_CURRENT_USER } from '../actions/session_actions';
-import { RECEIVE_SERVER_MEMBERS, RESET_USERS, RECEIVE_FRIENDS } from '../actions/user_actions';
+import { RECEIVE_SERVER_MEMBERS, RECEIVE_DM_MEMBERS, RESET_USERS, RECEIVE_FRIENDS } from '../actions/user_actions';
 
 const usersReducer = (state = {}, action) => {
     Object.freeze(state);
@@ -12,6 +12,8 @@ const usersReducer = (state = {}, action) => {
             return {};
         case RECEIVE_SERVER_MEMBERS:
             return  Object.assign({}, state, action.members);
+        case RECEIVE_DM_MEMBERS:
+            return Object.assign({}, state, action.members);
         case RECEIVE_FRIENDS:
             return Object.assign({},state, action.friends);
         case RESET_USERS:

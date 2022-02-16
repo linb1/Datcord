@@ -3,9 +3,15 @@ import * as FriendshipApiUtil from "./../util/friendship_api_util";
 export const RECEIVE_SERVER_MEMBERS = "RECEIVE_SERVER_MEMBERS"
 export const RECEIVE_FRIENDS = "RECEIVE_FRIENDS"
 export const RESET_USERS = "RESET_USERS"
+export const RECEIVE_DM_MEMBERS = "RECEIVE_DM_MEMBERS"
 
 export const receiveServerMembers = members => ({
     type: RECEIVE_SERVER_MEMBERS,
+    members
+})
+
+export const receiveDmMembers = members => ({
+    type: RECEIVE_DM_MEMBERS,
     members
 })
 
