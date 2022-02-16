@@ -6,10 +6,22 @@ const Chat = (props) => {
     // debugger
     const [chat, setChat] = useState(null)
 
+    const currentChatId = () => {
+        if (props.type === "channel") {
+            return props.chatId.channelId
+        } else {
+            return props.chatId.dmId
+        }
+    }
+
         useEffect(() => {
-            props.requestChannel(props.chatId.channelId)
+            if (props.type === "channel"){
+                props.requestChannel(props.chatId.channelId) //refactor
+            } else {
+                props.requestDm(props.chatId.dmId)
+            }
             const chat = App.cable.subscriptions.create(
-                { channel: "MessagesChannel", type: props.type, id: props.chatId.channelId},
+                { channel: "MessagesChannel", type: props.type, id: currentChatId()},
                 {
                     received: (response) =>{
                         const { message } = response
@@ -21,9 +33,9 @@ const Chat = (props) => {
             return () => {
                 chat.unsubscribe()
             }
-        }, [props.chatId.channelId])
+        }, [currentChatId()])//refactor
 
-    const messages = props.channelMessages.map((message, idx) => {
+    const messages = props.chatMessages.map((message, idx) => {
         let member = props.members[message.sender_id]
         if (!member) {
             return <span key={`loading-${idx}`}></span>
@@ -49,7 +61,7 @@ const Chat = (props) => {
                 </div>
             </div>
             <div className="message-form-container">
-                <MessageForm chat={chat} currentUserId={props.currentUserId} channelId={props.chatId.channelId}/>
+                <MessageForm chat={chat} currentUserId={props.currentUserId} chatId={props.chatId.channelId} type={props.type}/>
             </div>
         </div>
     )
@@ -64,7 +76,7 @@ const mapStateToProps = (state, ownProps) => {
     return {
         currentUserId: state.session.currentUserId,
         chatId: ownProps.match.params,
-        channelMessages: Object.values(state.entities.messages),
+        chatMessages: Object.values(state.entities.messages),
         members: state.entities.users,
     };
 };
