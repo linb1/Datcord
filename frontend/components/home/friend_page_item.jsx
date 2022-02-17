@@ -3,7 +3,7 @@ import {Link} from "react-router-dom"
 const FriendPageItem = ({ friend, current_user_id, createDm, currentDm, ownProps}) => {
 
     const unfriendUser = (e) => {
-        e.preventDefault();
+        e.stopPropagation()
         console.log(friend.id)
         console.log(current_user_id)
     }
