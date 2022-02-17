@@ -16,6 +16,11 @@ class User < ApplicationRecord
         class_name: :Membership,
         dependent: :destroy
 
+    has_many :dmemberships,
+        foreign_key: :user_id,
+        class_name: :Dmembership,
+        dependent: :destroy
+
     has_many :servers,
         through: :memberships,
         source: :server

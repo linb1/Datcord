@@ -10,5 +10,14 @@ class DirectMessage < ApplicationRecord
         foreign_key: :friend_id,
         class_name: :User
 
+    has_many :dmemberships,
+        foreign_key: :dm_id,
+        class_name: :Dmembership,
+        dependent: :destroy
+    
+    has_many :dmembers,
+        through: :dmemberships,
+        source: :user
+
     has_many :messages, as: :messageable
 end
