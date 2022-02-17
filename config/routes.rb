@@ -8,9 +8,11 @@ Rails.application.routes.draw do
     resources :channels, only: [:create, :show, :index, :destroy]
     resources :direct_messages, only: [:create, :show, :index, :destroy]
     resources :memberships, only: [:create]
+    resources :dmemberships, only: [:create]
     resources :friendships, only: [:create, :index]
     resources :messages, only: [:create, :show]
     delete '/memberships', to: 'memberships#destroy'
+    delete '/dmemberships', to: 'memberships#destroy'
     delete '/friendships', to: 'friendships#destroy'
 
     mount ActionCable.server => '/cable'

@@ -4,13 +4,21 @@ json.friend do
     json.partial! 'api/users/user', user: direct_message.friend
 end
 
+# json.members do
+#         json.set! direct_message.friend.id do
+#             json.partial! 'api/users/user', user: direct_message.friend
+#         end
+#         json.set! direct_message.user.id do
+#             json.partial! 'api/users/user', user: direct_message.user
+#         end
+# end
+
 json.members do
-        json.set! direct_message.friend.id do
-            json.partial! 'api/users/user', user: direct_message.friend
+    direct_message.dmembers.each do |user|
+        json.set! user.id do
+            json.partial! 'api/users/user', user: user
         end
-        json.set! direct_message.user.id do
-            json.partial! 'api/users/user', user: direct_message.user
-        end
+    end
 end
 
 json.messages do

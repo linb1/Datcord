@@ -11,7 +11,8 @@ const FriendPageItem = ({ friend, current_user_id, createDm, currentDm, ownProps
     const createConvo = () => {
         const newDm = {
             user_id: current_user_id,
-            friend_id: friend.id
+            friend_id: friend.id,
+            member_ids: [current_user_id, friend.id]
         }
         createDm(newDm).then(res => ownProps.history.push(`/channel/@me/${res.dm.id}`))
     }
