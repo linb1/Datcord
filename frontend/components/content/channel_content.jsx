@@ -38,7 +38,7 @@ class ChannelContent extends React.Component{
                     </div>
                     <div className="channel-content">
                         <div className="message-container">
-                        <Chat type="channel"/> 
+                            <Chat type="channel"/> 
                         </div>
                         <div className="member-container">
                             <MemberIndexContainer />

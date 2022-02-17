@@ -7,7 +7,7 @@ class MessagesChannel < ApplicationCable::Channel
     if (params[:type] == "channel")
       @chat = Channel.find_by(id: params[:id])
     else
-
+      @chat = DirectMessage.find_by(id: params[:id])
     end
     stream_for @chat
   end

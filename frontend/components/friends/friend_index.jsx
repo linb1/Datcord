@@ -5,7 +5,6 @@ class FriendIndex extends React.Component{
 
     constructor(props){
         super(props)
-        this.getDmMessages = this.getDmMessages.bind(this)
     }
 
     componentDidMount() {
@@ -13,14 +12,9 @@ class FriendIndex extends React.Component{
         // this.props.requestFriends()
     }
 
-    getDmMessages(dmId){
-        this.props.resetUserState(this.props.currentUserId)
-        this.props.requestDm(dmId)
-    }
-
     render(){
         const friends = this.props.dms.map((dm,idx) => {
-            return <li key={idx} onClick={() => this.getDmMessages(dm.id)}>
+            return <li key={idx}>
                     <Link to={`/channel/@me/${dm.id}`}>
                         <img src={window.default_user_icon} width="32" height="32" />
                         <span>

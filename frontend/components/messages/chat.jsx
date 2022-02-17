@@ -61,7 +61,7 @@ const Chat = (props) => {
                 </div>
             </div>
             <div className="message-form-container">
-                <MessageForm chat={chat} currentUserId={props.currentUserId} chatId={props.chatId.channelId} type={props.type}/>
+                <MessageForm chat={chat} currentUserId={props.currentUserId} chatId={currentChatId()} type={props.type}/>
             </div>
         </div>
     )
@@ -71,7 +71,7 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { receiveMessage, removeMessage } from "../../actions/message_actions";
 import { requestChannel } from "../../actions/channel_actions";
-
+import { requestDm } from "../../actions/dm_actions";
 const mapStateToProps = (state, ownProps) => {
     return {
         currentUserId: state.session.currentUserId,

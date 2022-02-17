@@ -10,13 +10,21 @@ const MessageForm = (props) => {
         setBody(e.currentTarget.value)
     };
 
+    const currentChatType = () => {
+        if (props.type === "channel") {
+            return "Channel"
+        } else {
+            return "DirectMessage"
+        }
+    }
+
     const handleSubmit = (e) => {
         e.preventDefault();
         if (body){
             const message = {
                 sender_id: props.currentUserId,
                 body: body,
-                messageable_type: "Channel", //refactor
+                messageable_type: currentChatType(), //refactor
                 messageable_id: props.chatId //refactor
             }
             props.chat.send(message)

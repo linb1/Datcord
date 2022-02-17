@@ -1,10 +1,11 @@
 import React from "react";
+import Chat from "../messages/chat";
 
 class Dm extends React.Component {
 
     componentDidMount(){
         this.props.resetUserState(this.props.currentUserId)
-        this.props.requestDm(this.props.dmId)
+        // this.props.requestDm(this.props.dmId)
     }
 
     render() {
@@ -26,8 +27,8 @@ class Dm extends React.Component {
                     </div>
                 </div>
                 <div className="dm-content">
-                    <div className="dm-message-container">
-
+                    <div className="message-container type-dm">
+                        <Chat type="dm"/> 
                     </div>
                 </div>
             </div>

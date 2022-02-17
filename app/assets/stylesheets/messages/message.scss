@@ -5,6 +5,11 @@
     background-color: #36393E;
 }
 
+.message-container.type-dm{
+    // border: 2px solid brown;
+    height: calc(100vh - 52px);
+}
+
 .chat-container{
     // border: 2px solid yellow;
     display: flex;
