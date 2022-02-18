@@ -43,7 +43,7 @@
 }
 
 .friend-index-container{
-    // border: 2px solid green;
+    // border: 1px solid green;
     height: 100%;
     background-color: #2E3136;
 }
@@ -51,7 +51,7 @@
 .friend-list-container{
     // border: 2px solid cyan;
     overflow-y: scroll;
-    height: calc(100vh - 114px);
+    height: calc(100vh - 159px);
     padding: 5px;
     font-family: 'Whitney Book', sans-serif;
     font-size: 16px;
@@ -114,10 +114,15 @@
     font-weight: 400;
 }
 
+.dm-plus:hover{
+    opacity: 60%;
+    cursor: not-allowed;
+}
+
 .join-seeded-server-container{
     // border: 2px solid red;
-    width: 100%;
-    background-color: #36393E;
+    width: 90%;
+    // background-color: #36393E;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -135,12 +140,15 @@
 
 .join-seeded-server-button{
     // border: 2px solid green;
+    width: 100%;
+    margin-left: 20px;
+    margin-top: 10px;
     button{
-        width: 300px;
-        height: 75px;
+        width: 100%;
+        height: 35px;
         box-sizing: border-box;
-        padding: 10px;
-        font-size: 18px;
+        // padding: 10px;
+        font-size: 14px;
         font-family: 'Whitney Book', sans-serif;
         color: white;
         border-radius: 7px;

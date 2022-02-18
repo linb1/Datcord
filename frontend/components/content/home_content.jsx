@@ -66,20 +66,17 @@ class HomeContent extends React.Component{
                         <div className="friend-search">Find or start a conversation</div>
                     </div>
                     <div className="friend-index-container">
+                        <div className="join-seeded-server-container">
+                            <div className="join-seeded-server-button">
+                                {seededServerButton}
+                            </div>
+                        </div>
                         <FriendIndexContainer/>
                     </div>
                     <div className="profile-container">
                         <ProfileContainer />
                     </div>
                 </div>
-                {/* <div className="join-seeded-server-container">
-                    <div className="join-seeded-server-header">
-                        <span>Click the button to get started!</span>
-                    </div>
-                    <div className="join-seeded-server-button">
-                        {seededServerButton}
-                    </div>
-                </div> */}
                 <div className="dm-section-container">
                     <Switch>
                         <Route path="/channel/@me/:dmId" component={DmContainer} />

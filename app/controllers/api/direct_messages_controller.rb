@@ -50,12 +50,13 @@ class Api::DirectMessagesController < ApplicationController
     end
 
     def destroy
-        @dm = DirectMessage.find_by(user_id: dm_params[:user_id], friend_id: dm_params[:friend_id])
-        other_dm = DirectMessage.find_by(user_id: dm_params[:friend_id], friend_id: dm_params[:user_id])
-        if @dm.destroy && other_dm.destroy
+        # @dm = DirectMessage.find_by(user_id: dm_params[:user_id], friend_id: dm_params[:friend_id])
+        @dm = DirectMessage.find_by(id: params[:id])
+        # other_dm = DirectMessage.find_by(user_id: dm_params[:friend_id], friend_id: dm_params[:user_id])
+        if @dm.destroy
             render 'api/direct_messages/show'
         else
-            render json: @friendship.errors.full_messages, status: 422
+            render json: @dm.errors.full_messages, status: 422
         end
     end
 

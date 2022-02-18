@@ -33,6 +33,11 @@
     img{
         margin-right: 15px;
     }
+
+    img:hover{
+        opacity: 60%;
+        cursor: no-drop;
+    }
 }
 
 .server-header-title{
@@ -109,6 +114,11 @@
     color: #8E9297;
     img{
         margin: 0 5px 0 5px;
+    }
+
+    img:hover{
+        opacity: 60%;
+        cursor: not-allowed;
     }
 }
 

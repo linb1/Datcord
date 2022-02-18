@@ -1,18 +1,21 @@
 import React from "react";
 import {Link} from "react-router-dom"
-const FriendPageItem = ({ friend, current_user_id, createDm, currentDm, ownProps}) => {
+const FriendPageItem = ({ friend, currentUserId, createDm, deleteFriendship, ownProps}) => {
 
     const unfriendUser = (e) => {
         e.stopPropagation()
-        console.log(friend.id)
-        console.log(current_user_id)
+        const friendship = {
+            user_id: currentUserId,
+            friend_id: friend.id
+        }
+        deleteFriendship(friendship)
     }
 
     const createConvo = () => {
         const newDm = {
-            user_id: current_user_id,
+            user_id: currentUserId,
             friend_id: friend.id,
-            member_ids: [current_user_id, friend.id]
+            member_ids: [currentUserId, friend.id]
         }
         createDm(newDm).then(res => ownProps.history.push(`/channel/@me/${res.dm.id}`))
     }
@@ -32,12 +35,14 @@ const FriendPageItem = ({ friend, current_user_id, createDm, currentDm, ownProps
                 </div>
                 <div className="friend-options-container">
                     <div className="friend-option message" onClick={createConvo}>
-                        {/* <Link to={`/channel/@me/${friend.id}`} onClick={createConvo}> */}
-                            <img src={window.message}/>
-                        {/* </Link> */}
+                        <img src={window.message}/>
+                        <div className="hover-label">Message</div>
+                        <div className="hover-triangle"></div>
                     </div>
                     <div className="friend-option unfriend" onClick={unfriendUser}>
                         <img src={window.bin} />
+                        <div className="hover-label">Remove</div>
+                        <div className="hover-triangle"></div>
                     </div>
                 </div>
             </div>

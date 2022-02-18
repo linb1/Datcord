@@ -165,7 +165,7 @@
     align-items: center;
     justify-content: center;
     background-color: #2f3136;
-
+    position: relative;
     // a{
     //     display: flex;
     //     justify-content: center;
@@ -180,13 +180,48 @@
 }
 
 .friend-option.message:hover{
+
+    .hover-label, .hover-triangle {
+        display: block;
+    }
+
     img{
         filter: invert(100%);
     }
 }
 
 .friend-option.unfriend:hover{
+
+    .hover-label, .hover-triangle {
+        display: block;
+    }
+
     img{
         filter: invert(90%) brightness(60%) sepia(100) saturate(70) hue-rotate(29deg);
     }
+}
+
+.hover-label{
+    display: none;
+    position: absolute;
+    top: -40px;
+    background-color: #1E2022;
+    font-family: "Whitney Book", sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 8px 12px;
+    border-radius: 4px;
+    color: white;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+}
+
+.hover-triangle {
+    display: none;
+    position: absolute;
+    top: -12px;
+    height: 0;
+    width: 0;
+    border-style: solid;
+    border-color: #1E2022 transparent transparent transparent;
+    border-width: 10px 10px 0 10px;
 }
