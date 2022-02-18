@@ -144,7 +144,7 @@
 }
 #channel-index-item-content-container{
     // border: 2px solid cyan;
-    max-width: 170px;
+    max-width: 200px;
     margin-left: 5px;
     margin-right: 5px;
     padding: 3px;
@@ -162,6 +162,7 @@
     align-items: center;
     padding: 7px;
     gap: 7px;
+    position: relative;
     span{
         padding-bottom: 2px;
         overflow-x: hidden;
@@ -170,6 +171,16 @@
     }
     img{
         filter: invert(45%);
+    }
+
+    .delete-channel{
+        position: absolute;
+        margin-right: 7px;
+        right: 0px;
+    }
+
+    .delete-channel:hover{
+        filter: brightness(50);
     }
 }
 

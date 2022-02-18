@@ -8,7 +8,11 @@ import { withRouter } from 'react-router-dom';
 
 const mapStateToProps = (state, ownProps) => {
     return {
-        current_server_id: ownProps.match.params.serverId,
+        currentChannelId: ownProps.match.params.channelId,
+        currentServerId: ownProps.match.params.serverId,
+        currentServer: state.entities.servers[ownProps.match.params.serverId],
+        currentUserId: state.session.currentUserId,
+        generalChannel: Object.values(state.entities.channels)[0],
     }
 }
 const mapDispatchToProps = (dispatch) => {

@@ -16,7 +16,7 @@ class ChannelIndex extends React.Component{
     render(){
         // debugger;
         const channels = this.props.channels.map((channel, idx) => {
-            return <li key={idx}><ChannelIndexItemContainer channel={channel}/></li>
+            return <li key={idx}><ChannelIndexItemContainer channel={channel} idx={idx}/></li>
         })
         return(
             <div className="channel-index">
