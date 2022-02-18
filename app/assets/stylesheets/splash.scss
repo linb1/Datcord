@@ -256,10 +256,26 @@
     a{
         color: white;
         text-decoration: none;
+        transition-duration: 0.2s;
     }
 
     a:hover{
         color:rgb(197, 197, 197);
+        text-decoration: underline;
+    }
+
+}
+
+.contact-info{
+    a{
+        color: rgb(120, 120, 247);
+        text-decoration: none;
+        transition-duration: 0.2s;
+    }
+
+    a:hover{
+        color: rgb(166, 166, 245);
+        text-decoration: underline;
     }
 }
 

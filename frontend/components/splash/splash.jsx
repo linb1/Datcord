@@ -25,6 +25,8 @@ class Splash extends React.Component{
                             <ul>
                                 <li><a href="https://github.com/linb1/Datcord" target="_blank">Github</a></li>
                                 <li><a href="https://www.linkedin.com/in/brian-lin-1590/" target="_blank">LinkedIn</a></li>
+                                <li><a href="https://angel.co/u/brian-lin-40" target="_blank">AngelList</a></li>
+                                <li><a href="https://linb1.github.io/portfolio/" target="_blank">Portfolio</a></li>
                             </ul>
                         </nav>
                         <div className='splash-button-container'>
@@ -61,9 +63,8 @@ class Splash extends React.Component{
                         <div className='splash-section-container'>
                             <div className="splash-section-content">
                                 <h2>Where hanging out is easy</h2>
-                                <p>Join the public server or create your own
-                                    server and channels! Chat with other members
-                                    in real time!
+                                <p>Join the public server or create your own! 
+                                    Chat with other members or message them directly in real time!
                                 </p>
                             </div>
                             <div className='splash-section-img-container'>
@@ -94,15 +95,18 @@ class Splash extends React.Component{
                                     <p>Disclaimer: Images used in Datcord are taken
                                         from the offical Discord website for the purpose
                                         of making an accurate clone. All credit belongs
-                                        to discord
+                                        to Discord.
+                                    </p>
+                                    <br/>
+                                    <p>
+                                        This application was made using React, Redux, Ruby on Rails, ActionCable/Websocket, Postgresql, and more.
                                     </p>
                                 </div>
-                                <div className='info-list'>
-                                    <h4>About me</h4>
+                                <div className='info-list contact-info'>
+                                    <h4>Contact Info</h4>
                                     <ul>
-                                        <li>From Queens, NY</li>
-                                        <li>Aspiring Software Engineer</li>
-                                        <li>I know how to play one song on the piano</li>
+                                        <li>Link to: <a href="https://docs.google.com/document/d/1Wb5GM1-0KRLcxsrvtEpLrUwxy3ar8x5RCLeGxvD307Q/edit?usp=sharing" target="_blank">Resume</a></li>
+                                        <li>E-MAIL: <a href="mailto: linbrian.b@gmail.com">linbrian.b@gmail.com</a></li>
                                     </ul>
                                 </div>
                                 <div className='info-list'>
@@ -110,6 +114,8 @@ class Splash extends React.Component{
                                     <ul>
                                         <li><a href="https://github.com/linb1/Datcord" target="_blank">Github</a></li>
                                         <li><a href="https://www.linkedin.com/in/brian-lin-1590/" target="_blank">LinkedIn</a></li>
+                                        <li><a href="https://angel.co/u/brian-lin-40" target="_blank">AngelList</a></li>
+                                        <li><a href="https://linb1.github.io/portfolio/" target="_blank">Portfolio</a></li>
                                     </ul>
                                 </div>
                             </div>
