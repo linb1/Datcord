@@ -91,13 +91,16 @@ When a message is broadcasted, it is received on the frontend and added to the r
      - Servers display all channels that they owns, as well as all users that are members of the server.
      - Channels each have their own live chat.
 
+### Home Page
+ - Users can directly message other users that are on the user's friends list.
+ - Users can also choose to remove others from their friends list.
+ - There is a option to join the public server for new users.
+
 # Future implementations for Datcord
- - Delete/edit channel modal
- - Delete/edit server dropdown
+ - Server/Channel dropdowns/modals
  - Real time updates for when new users joins/create channels
  - Profile modal - show/edit user information and logout option
  - Adding friends
- - Direct Messages
  - Uploading custom images
  - Search functionality - for friends and messages
  - Reactions
